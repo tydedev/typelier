@@ -1,0 +1,86 @@
+{
+  "Layout": {
+    "title": "Typory - The typographic library for indie authors and publishers",
+    "description": ""
+  },
+
+  "NotFound": {
+    "title": "404 - Page not found",
+    "description": "The page you are looking for could not be found.",
+    "link": "Go back to the homepage"
+  },
+  "Hero": {
+    "chapter": "Typory",
+    "title1": "Find the typography",
+    "title2": "behind every story",
+    "subtitle": "Research-driven typography systems for books, curated around genre, atmosphere, and readability."
+  },
+  "InfoSection": {
+    "quote": "Typography is the craft of endowing human language with a durable visual form.",
+    "author": "Robert Bringhurst",
+    "question": "What is Typory?",
+    "description": "Typory is an independent typographic library for novels. Each system is manually researched, curated, and tested to find typefaces that work together both visually and functionally in long-form reading.",
+    "highlight": "From fantasy worlds to literary fiction, each system considers genre, atmosphere, legibility, and the overall reading experience."
+  },
+  "Footer": {
+    "title": "Typory",
+    "description": "<p>Typory is an independent, non-profit project.</p><p>All typography systems are manually researched and curated.</p>",
+    "copyright": "All rights reserved.",
+    "developer": "Curated and developed by",
+    "navigation": {
+      "explore": "Explore",
+      "about": "About",
+      "support": "Support me"
+    }
+  },
+
+  "Header": {
+    "home": "Home",
+    "library": "Library",
+    "about": "About",
+    "howTo": "How to use"
+  },
+
+  "BookPage": {
+    "chapter": "Chapter One",
+    "title": "Down the Rabbit-Hole",
+    "body": "<p>Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, “and what is the use of a book,” thought Alice “without pictures or conversations?”</p><indent>So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.</indent><indent>There was nothing so very remarkable in that; nor did Alice think it so very much out of the way to hear the Rabbit say to itself, “Oh dear! Oh dear! I shall be late!”</indent>",
+    "body_short": "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading..."
+  },
+
+  "Library": {
+    "no_results": "No results",
+    "filters": {
+      "search": "Search",
+      "view": "Change view",
+      "genre": "Genre",
+      "mood": "Mood",
+      "style": "Style",
+      "all_genres": "All genres",
+      "all_moods": "All moods",
+      "all_styles": "All styles",
+      "placeholder": "Search typeface, genre, style, or mood...",
+      "reset": "Reset"
+    },
+    "title": "Library",
+    "subtitle": "Typefaces",
+    "pairing": {
+      "headingTitle": "Heading",
+      "bodyTitle": "Body"
+    }
+  },
+
+  "PairingPage": {
+    "NotFound": "Pairing not found",
+    "fonts": {
+      "heading": "Heading",
+      "body": "Body"
+    },
+    "recommended": "Recommended for",
+    "type": "Type",
+    "genre": "Genre",
+    "subgenre": "Subgenre",
+    "headingTitle": "Heading",
+    "bodyTitle": "Body"
+  }
+}

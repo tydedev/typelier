@@ -1,0 +1,77 @@
+{
+  "Layout": {
+    "title": "Typory - La libreria tipografica per autori e editori indipendenti",
+    "description": ""
+  },
+  "NotFound": {
+    "title": "404 - Pagina non trovata",
+    "description": "La pagina che stai cercando non esiste.",
+    "link": "Torna alla homepage"
+  },
+  "Hero": {
+    "chapter": "Typory",
+    "title1": "A ogni storia",
+    "title2": "la sua tipografia",
+    "subtitle": "Sistemi tipografici studiati per i libri, costruiti attorno a genere, atmosfera e leggibilità."
+  },
+  "InfoSection": {
+    "quote": "La tipografia è il mestiere di dare al linguaggio umano una forma visiva duratura.",
+    "author": "Robert Bringhurst",
+    "question": "Cos'è Typory?",
+    "description": "Typory è una libreria tipografica indipendente per romanzi. Ogni sistema è studiato manualmente, selezionato e testato per trovare i tipi di carattere che funzionano insieme sia visualmente che funzionalmente in letture di lunga durata.",
+    "highlight": "Dai mondi fantasy alla narrativa letteraria, ogni sistema considera genere, atmosfera, leggibilità e l'esperienza complessiva di lettura."
+  },
+  "Footer": {
+    "title": "Typory",
+    "description": "<p>Typory è un progetto indipendente e non profit.</p><p>Tutti i sistemi tipografici sono studiati e selezionati manualmente.</p>",
+    "copyright": "Tutti i diritti riservati.",
+    "developer": "Curato e sviluppato da",
+    "navigation": {
+      "explore": "Esplora",
+      "about": "Chi siamo",
+      "support": "Supportami"
+    }
+  },
+
+  "Header": {
+    "home": "Home",
+    "library": "Libreria",
+    "about": "Chi siamo",
+    "howTo": "Come si usa"
+  },
+
+  "BookPage": {
+    "chapter": "Capitolo Uno",
+    "title": "Nella Conigliera",
+    "body": "<p>Alice cominciava a sentirsi assai stanca di sedere sul poggetto accanto a sua sorella, senza far niente: aveva una o due volte data un'occhiata al libro che la sorella stava leggendo, ma non v'erano nè dialoghi nè figure, — e a che serve un libro, — pensò Alice, — senza dialoghi nè figure?</p><indent>E si domandava alla meglio, (perchè la canicola l'aveva mezza assonnata e istupidita), se per il piacere di fare una ghirlanda di margherite mettesse conto di levarsi a raccogliere i fiori, quand'ecco un coniglio bianco dagli occhi rosei passarle accanto, quasi sfiorandola.</indent><indent>Non c'era troppo da meravigliarsene, nè Alice pensò che fosse troppo strano sentir parlare il Coniglio, il quale diceva fra se: “Oimè! oimè! ho fatto tardi!”</indent>",
+    "body_short": "Alice cominciava a sentirsi assai stanca di sedere sul poggetto accanto a sua sorella, senza far niente: aveva una o due volte data un'occhiata al libro che la sorella stava leggendo..."
+  },
+
+  "Library": {
+    "no_results": "Nessun risultato",
+    "filters": {
+      "search": "Cerca",
+      "view": "Vista",
+      "genre": "Genere",
+      "mood": "Mood",
+      "style": "Stile",
+      "all_genres": "Tutti i generi",
+      "all_moods": "Tutti i mood",
+      "all_styles": "Tutti gli stili",
+      "placeholder": "Cerca tipografia, genere, stile, o mood...",
+      "reset": "Ripristina"
+    },
+    "title": "Library",
+    "subtitle": "Typefaces",
+    "pairing": {
+      "headingTitle": "Heading",
+      "bodyTitle": "Body"
+    }
+  },
+
+  "PairingPage": {
+    "NotFound": "Nessun risultato",
+    "headingTitle": "Heading",
+    "bodyTitle": "Body"
+  }
+}
