@@ -1,4 +1,4 @@
-import { genres } from "@/lib/nav";
+import { genres } from "@/lib/genres";
 import { useTranslations } from "next-intl";
 
 const Navigation = () => {
@@ -14,7 +14,7 @@ const Navigation = () => {
         <ul className="flex flex-col text-sm font-medium capitalize">
           {genres.map((genre) => (
             <li key={genre.name}>
-              <a href={genre.href}>{genre.name}</a>
+              <a href={genre.slug}>{genre.name}</a>
             </li>
           ))}
         </ul>
@@ -22,7 +22,7 @@ const Navigation = () => {
       <div className="col-span-full md:col-span-2 space-y-2">
         <h3>
           <span className="font-medium font-heading tracking-wider uppercase">
-            {t("about")}
+            {t("resources")}
           </span>
         </h3>
         <ul className="flex flex-col text-sm font-medium">
@@ -42,7 +42,9 @@ const Navigation = () => {
         </h3>
         <ul className="flex flex-col text-sm font-medium">
           <li>
-            <a href="#">Ko-fi</a>
+            <a href="https://ko-fi.com/tydedev" target="_blank">
+              Ko-fi
+            </a>
           </li>
         </ul>
       </div>

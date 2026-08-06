@@ -1,6 +1,6 @@
 {
   "Layout": {
-    "title": "Typory - La libreria tipografica per autori e editori indipendenti",
+    "title": "Typelier - La libreria tipografica per autori e editori indipendenti",
     "description": ""
   },
   "NotFound": {
@@ -9,26 +9,35 @@
     "link": "Torna alla homepage"
   },
   "Hero": {
-    "chapter": "Typory",
+    "chapter": "Typelier",
     "title1": "A ogni storia",
     "title2": "la sua tipografia",
-    "subtitle": "Sistemi tipografici studiati per i libri, costruiti attorno a genere, atmosfera e leggibilità."
+    "subtitle": "Sistemi tipografici studiati per i libri, costruiti attorno a genere, atmosfera e leggibilità.",
+    "button": "Esplora la libreria"
   },
   "InfoSection": {
     "quote": "La tipografia è il mestiere di dare al linguaggio umano una forma visiva duratura.",
     "author": "Robert Bringhurst",
-    "question": "Cos'è Typory?",
-    "description": "Typory è una libreria tipografica indipendente per romanzi. Ogni sistema è studiato manualmente, selezionato e testato per trovare i tipi di carattere che funzionano insieme sia visualmente che funzionalmente in letture di lunga durata.",
+    "question": "Cos'è Typelier?",
+    "description": "Typelier è una libreria tipografica indipendente per romanzi. Ogni sistema è studiato manualmente, selezionato e testato per trovare i tipi di carattere che funzionano insieme sia visualmente che funzionalmente in letture di lunga durata.",
     "highlight": "Dai mondi fantasy alla narrativa letteraria, ogni sistema considera genere, atmosfera, leggibilità e l'esperienza complessiva di lettura."
   },
+
+  "HowItWorks": {
+    "title": "Come funziona",
+    "question": "Ogni storia merita la sua tipografia.",
+    "description": "<p>Typelier è una raccolta curata di sistemi tipografici pensati per romanzi e testi lunghi.</p><p>Ricerchiamo e combiniamo font gratuiti disponibili su <b>Google Fonts</b> per aiutare autori e designer a trovare l'abbinamento capace di valorizzare il tono, il genere e l'atmosfera della loro storia.</p>",
+    "browse": "Cerca per genere"
+  },
+
   "Footer": {
-    "title": "Typory",
-    "description": "<p>Typory è un progetto indipendente e non profit.</p><p>Tutti i sistemi tipografici sono studiati e selezionati manualmente.</p>",
+    "title": "Typelier",
+    "description": "<p>Typelier è un progetto indipendente e non profit.</p><p>Tutti i sistemi tipografici sono studiati e selezionati manualmente.</p>",
     "copyright": "Tutti i diritti riservati.",
     "developer": "Curato e sviluppato da",
     "navigation": {
       "explore": "Esplora",
-      "about": "Chi siamo",
+      "resources": "Risorse",
       "support": "Supportami"
     }
   },
@@ -36,7 +45,7 @@
   "Header": {
     "home": "Home",
     "library": "Libreria",
-    "about": "Chi siamo",
+    "resources": "Risorse",
     "howTo": "Come si usa"
   },
 

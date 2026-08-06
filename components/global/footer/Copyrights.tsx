@@ -6,7 +6,7 @@ const Copyrights = () => {
   return (
     <div className="col-span-full text-xs mt-10 flex flex-col md:flex-row md:justify-between gap-2">
       <p className="max-w-sm">
-        &copy; {new Date().getFullYear()} Chapterly. {t("copyright")}
+        &copy; {new Date().getFullYear()} Typelier. {t("copyright")}
       </p>
       <p className="max-w-sm">
         {t("developer")}{" "}

@@ -1,6 +1,6 @@
 {
   "Layout": {
-    "title": "Typory - The typographic library for indie authors and publishers",
+    "title": "Typelier - The typographic library for indie authors and publishers",
     "description": ""
   },
 
@@ -10,26 +10,34 @@
     "link": "Go back to the homepage"
   },
   "Hero": {
-    "chapter": "Typory",
+    "chapter": "Typelier",
     "title1": "Find the typography",
     "title2": "behind every story",
-    "subtitle": "Research-driven typography systems for books, curated around genre, atmosphere, and readability."
+    "subtitle": "Research-driven typography systems for books, curated around genre, atmosphere, and readability.",
+    "button": "Explore pairings"
   },
   "InfoSection": {
     "quote": "Typography is the craft of endowing human language with a durable visual form.",
     "author": "Robert Bringhurst",
-    "question": "What is Typory?",
-    "description": "Typory is an independent typographic library for novels. Each system is manually researched, curated, and tested to find typefaces that work together both visually and functionally in long-form reading.",
+    "question": "What is Typelier?",
+    "description": "Typelier is an independent typographic library for novels. Each system is manually researched, curated, and tested to find typefaces that work together both visually and functionally in long-form reading.",
     "highlight": "From fantasy worlds to literary fiction, each system considers genre, atmosphere, legibility, and the overall reading experience."
   },
+
+  "HowItWorks": {
+    "title": "How it works",
+    "question": "Every story deserves the right typography.",
+    "description": "<p>Typelier is a curated collection of typography systems for novels and long-form writing.</p><p>We research and combine free fonts from <b>Google Fonts</b> to help authors and designers find pairings that match the mood, genre, and voice of their stories.</p>",
+    "browse": "Browse by genre"
+  },
   "Footer": {
-    "title": "Typory",
-    "description": "<p>Typory is an independent, non-profit project.</p><p>All typography systems are manually researched and curated.</p>",
+    "title": "Typelier",
+    "description": "<p>Typelier is an independent, non-profit project.</p><p>All typography systems are manually researched and curated.</p>",
     "copyright": "All rights reserved.",
     "developer": "Curated and developed by",
     "navigation": {
       "explore": "Explore",
-      "about": "About",
+      "resources": "Resources",
       "support": "Support me"
     }
   },
@@ -37,8 +45,17 @@
   "Header": {
     "home": "Home",
     "library": "Library",
-    "about": "About",
+    "resources": "Resources",
     "howTo": "How to use"
+  },
+
+  "Donate": {
+    "title": "Enjoying Typelier?",
+    "description": "If you like the project, consider making a donation.",
+    "button": "Support me on Ko-fi",
+    "title2": "Explore the library",
+    "description2": "Find the right typography system for your story.",
+    "button2": "Browse the library"
   },
 
   "BookPage": {

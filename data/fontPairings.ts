@@ -122,6 +122,7 @@ const pairings = [
   {
     id: "scifi-001",
     name: "Future Interface",
+    featured: true,
     classification: {
       type: "fiction",
       genre: "science fiction",
@@ -161,7 +162,6 @@ const pairings = [
   {
     id: "horror-001",
     name: "Gothic Horror",
-    featured: true,
     classification: {
       type: "fiction",
       genre: "horror",
