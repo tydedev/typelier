@@ -1,43 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ContentItem } from "@/lib/content";
 
-type FeaturedResourceProps = {
-  resource: {
-    slug: string;
-    metadata: {
-      title: string;
-      description: string;
-      category: string;
-      image?: string;
-    };
-  };
+type Props = {
+  item: ContentItem;
 };
 
-export default function FeaturedResource({ resource }: FeaturedResourceProps) {
-  const { metadata } = resource;
+const FeaturedProduct = ({ item }: Props) => {
+  const { metadata } = item;
 
   return (
     <section
       className="
         grid
+        grid-cols-1
         gap-10
-        overflow-hidden
-        rounded-2xl
-        bg-neutral-100
-        md:grid-cols-2
-        md:p-12
+        lg:grid-cols-12
+        items-center
       "
     >
-      <div className="flex flex-col justify-center">
+      <div className="lg:col-span-6">
         <p
           className="
             text-xs
             uppercase
-            tracking-[0.25em]
-            text-neutral-500
+            tracking-[0.2em]
+            text-foreground/50
           "
         >
-          Featured Article
+          {metadata.category}
         </p>
 
         <h1
@@ -57,36 +48,46 @@ export default function FeaturedResource({ resource }: FeaturedResourceProps) {
             mt-6
             text-lg
             leading-relaxed
-            text-neutral-600
+            text-foreground/60
           "
         >
           {metadata.description}
         </p>
 
+        {metadata.price ? (
+          <p className="mt-4 text-lg">${metadata.price}</p>
+        ) : null}
+
         <Link
-          href={`/resources/${resource.slug}`}
+          href={`/shop/${item.slug}`}
           className="
             mt-8
+            inline-block
             text-sm
             font-medium
           "
         >
-          Read article →
+          View product →
         </Link>
       </div>
 
       {metadata.image && (
-        <div className="max-h-[400px]">
+        <div className="lg:col-span-6">
           <Image
             src={metadata.image}
             alt={metadata.title}
-            height={400}
-            width={600}
+            width={800}
+            height={600}
             className="
-          "
+              aspect-[3/3]
+              w-full
+              object-cover
+            "
           />
         </div>
       )}
     </section>
   );
-}
+};
+
+export default FeaturedProduct;

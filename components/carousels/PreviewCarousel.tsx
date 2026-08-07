@@ -38,7 +38,7 @@ export default function PreviewCarousel() {
   }, []);
 
   return (
-    <div className="relative w-full flex justify-center items-center flex-1/2">
+    <div className="relative w-full flex justify-center items-center flex-1/2 py-30 mb-20">
       {previews.map((preview, i) => (
         <BookPreview
           key={i}

@@ -15,7 +15,7 @@ type Props = {
 export default async function ResourcePage({ params }: Props) {
   const { locale, slug } = await params;
 
-  const resource = getContent("resources", locale, slug);
+  const resource = getContent("shop", locale, slug);
 
   if (!resource) {
     notFound();
@@ -70,7 +70,7 @@ export default async function ResourcePage({ params }: Props) {
                 ""
               )}
             </p>
-            <p>{resource.metadata.readingTime} min.</p>
+            <p>{resource.metadata.readingTime}</p>
           </div>
         </header>
 

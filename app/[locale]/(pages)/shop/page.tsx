@@ -12,15 +12,15 @@ type Props = {
 export default async function Resources({ params }: Props) {
   const { locale } = await params;
 
-  const resources = getContents("resources", locale);
+  const products = getContents("shop", locale);
 
-  const featured = resources.find((item) => item.metadata.featured);
+  const featured = products.find((item) => item.metadata.featured);
 
-  const latest = resources.filter((item) => item.slug !== featured?.slug);
+  const latest = products.filter((item) => item.slug !== featured?.slug);
 
   return (
     <>
-      <Heading>Resources</Heading>
+      <Heading>products</Heading>
 
       <div className="py-20 flex flex-col">
         <div className="">
@@ -28,7 +28,7 @@ export default async function Resources({ params }: Props) {
         </div>
 
         <div className="mt-24">
-          <ContentGrid items={latest} title="Latest Resources" />
+          <ContentGrid items={latest} title="Latest Products" />
         </div>
       </div>
     </>
