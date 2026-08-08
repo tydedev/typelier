@@ -47,14 +47,13 @@ export default function FeaturedContent({ item }: Props) {
           className="
             mt-5
             font-serif
-            text-4xl
+            text-3xl
             leading-tight
-            md:text-5xl
+            md:text-4xl
           "
         >
           {metadata.title}
         </h1>
-
         <p
           className="
             mt-6
@@ -92,7 +91,8 @@ export default function FeaturedContent({ item }: Props) {
             width={800}
             height={600}
             className="
-              aspect-[4/3]
+              
+              aspect-video
               w-full
               object-cover
             "

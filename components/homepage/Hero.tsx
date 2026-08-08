@@ -19,7 +19,7 @@ const Hero = () => {
           Typelier
         </h2>
 
-        <h1 className="font-heading text-4xl md:text-6xl font-medium text-foreground leading-[0.9]">
+        <h1 className="font-heading text-4xl md:text-6xl font-normal text-foreground leading-[0.9]">
           <span className="block">{t("title1")}</span>
           <span className="block">{t("title2")}</span>
         </h1>

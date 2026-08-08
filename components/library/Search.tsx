@@ -2,12 +2,13 @@
 
 import Heading from "../global/Heading";
 import PairingList from "./PairingList";
+import LibraryToolbar from "./LibraryToolbar";
+import LibraryFilters from "./LibraryFilters";
+import Pagination from "../ui/Pagination";
+
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-
-import LibraryToolbar from "./LibraryToolbar";
-import LibraryFilters from "./LibraryFilters";
 
 import { Pairing } from "@/types/pairing";
 
@@ -20,6 +21,8 @@ type Filters = {
 type Props = {
   filteredPairings: Pairing[];
   filters: Filters;
+  currentPage: number;
+  totalPages: number;
 };
 
 const views = {
@@ -29,7 +32,12 @@ const views = {
   4: "grid-cols-1 md:grid-cols-4",
 };
 
-export default function Search({ filteredPairings, filters }: Props) {
+export default function Search({
+  filteredPairings,
+  filters,
+  currentPage,
+  totalPages,
+}: Props) {
   const t = useTranslations("Library");
 
   const [view, setView] = useState(views[4]);
@@ -46,6 +54,9 @@ export default function Search({ filteredPairings, filters }: Props) {
     } else {
       params.delete(key);
     }
+
+    // Quando cambia un filtro, torniamo alla prima pagina.
+    params.delete("page");
 
     router.push(`/library?${params.toString()}`);
   };
@@ -78,6 +89,8 @@ export default function Search({ filteredPairings, filters }: Props) {
           <PairingList pairings={filteredPairings} />
         )}
       </div>
+
+      <Pagination currentPage={currentPage} totalPages={totalPages} />
     </>
   );
 }

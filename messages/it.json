@@ -46,6 +46,8 @@
     "home": "Home",
     "library": "Libreria",
     "resources": "Risorse",
+    "articles": "Articoli",
+    "shop": "Shop",
     "howTo": "Come si usa"
   },
 
@@ -79,7 +81,15 @@
   },
 
   "PairingPage": {
-    "NotFound": "Nessun risultato",
+    "NotFound": "Pairing not found",
+    "fonts": {
+      "heading": "Titoli",
+      "body": "Corpo del testo"
+    },
+    "recommended": "Consigliato per",
+    "type": "Type",
+    "genre": "Genre",
+    "subgenre": "Subgenre",
     "headingTitle": "Heading",
     "bodyTitle": "Body"
   }

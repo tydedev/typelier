@@ -17,6 +17,7 @@ const FeaturedProduct = ({ item }: Props) => {
         gap-10
         lg:grid-cols-12
         items-center
+        py-20
       "
     >
       <div className="lg:col-span-6">
@@ -35,9 +36,9 @@ const FeaturedProduct = ({ item }: Props) => {
           className="
             mt-5
             font-serif
-            text-4xl
+            text-3xl
             leading-tight
-            md:text-5xl
+            md:text-4xl
           "
         >
           {metadata.title}
@@ -79,7 +80,7 @@ const FeaturedProduct = ({ item }: Props) => {
             width={800}
             height={600}
             className="
-              aspect-[3/3]
+            aspect-video
               w-full
               object-cover
             "

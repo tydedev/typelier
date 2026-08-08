@@ -6,6 +6,7 @@ import { getReadingTime } from "@/components/ReadingTime";
 export type ContentItem = {
   slug: string;
   metadata: {
+    id: string;
     title: string;
     description: string;
     category: string;
@@ -67,4 +68,30 @@ export function getContents(
       return getContent(folder, locale, slug);
     })
     .filter((item): item is ContentItem => item !== null);
+}
+
+export function getTranslatedSlug(
+  folder: "resources" | "shop",
+  id: string,
+  targetLocale: string,
+): string | null {
+  const items = getContents(folder, targetLocale);
+  const match = items.find((item) => item.metadata.id === id);
+  return match?.slug ?? null;
+}
+
+export function getTranslatedPathnames(
+  folder: "resources" | "shop",
+  id: string,
+  locales: string[] = ["it", "en"],
+): Partial<Record<string, string>> {
+  const base = folder === "resources" ? "/resources" : "/shop";
+  const result: Partial<Record<string, string>> = {};
+
+  for (const loc of locales) {
+    const slug = getTranslatedSlug(folder, id, loc);
+    if (slug) result[loc] = `${base}/${slug}`;
+  }
+
+  return result;
 }

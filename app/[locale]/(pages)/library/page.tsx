@@ -1,5 +1,6 @@
 import Search from "@/components/library/Search";
 import pairings from "@/data/fontPairings";
+import { paginate } from "@/lib/pagination";
 
 type Props = {
   searchParams: Promise<{
@@ -8,6 +9,7 @@ type Props = {
     fontCategory?: string;
     mood?: string;
     q?: string;
+    page?: string;
   }>;
 };
 
@@ -17,8 +19,10 @@ type Filters = {
   moods: string[];
 };
 
+const ITEMS_PER_PAGE = 12;
+
 async function Library({ searchParams }: Props) {
-  const { genre, subgenre, fontCategory, mood, q } = await searchParams;
+  const { genre, subgenre, fontCategory, mood, q, page } = await searchParams;
 
   const filters: Filters = {
     genres: [...new Set(pairings.map((p) => p.classification.genre))],
@@ -71,7 +75,18 @@ async function Library({ searchParams }: Props) {
     );
   }
 
-  return <Search filteredPairings={filteredPairings} filters={filters} />;
+  const currentPage = Number(page ?? 1);
+
+  const pagination = paginate(filteredPairings, currentPage, ITEMS_PER_PAGE);
+
+  return (
+    <Search
+      filteredPairings={pagination.items}
+      filters={filters}
+      currentPage={pagination.currentPage}
+      totalPages={pagination.totalPages}
+    />
+  );
 }
 
 export default Library;

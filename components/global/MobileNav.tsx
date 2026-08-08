@@ -19,9 +19,7 @@ const MobileNav = () => {
   const [open, setOpen] = useState(false);
 
   const onClick = () => {
-    if (open) {
-      setOpen(false);
-    }
+    setOpen(false);
   };
 
   return (
@@ -31,25 +29,41 @@ const MobileNav = () => {
           <Menu />
         </Button>
       </DrawerTrigger>
+
       <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle className="font-heading text-lg text-center mt-10 font-medium text-foreground">
+          <DrawerTitle className="mt-10 text-center font-heading text-lg font-medium text-foreground">
             Menu
           </DrawerTitle>
         </DrawerHeader>
+
         <nav>
-          <ul className="flex flex-col text-center mt-20 gap-6">
-            {links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="font-medium font-heading tracking-wider uppercase"
-                  onClick={onClick}
-                >
-                  {t(link.name)}
-                </Link>
-              </li>
-            ))}
+          <ul className="mt-20 flex flex-col gap-6 text-center">
+            {links.map((link) =>
+              "submenu" in link ? (
+                link.menuItems.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="font-heading font-medium uppercase tracking-wider"
+                      onClick={onClick}
+                    >
+                      {t(item.name)}
+                    </Link>
+                  </li>
+                ))
+              ) : (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="font-heading font-medium uppercase tracking-wider"
+                    onClick={onClick}
+                  >
+                    {t(link.name)}
+                  </Link>
+                </li>
+              ),
+            )}
           </ul>
         </nav>
       </DrawerContent>

@@ -1,8 +1,10 @@
 import { genres } from "@/lib/genres";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 const Navigation = () => {
   const t = useTranslations("Footer.navigation");
+  const n = useTranslations("Header");
   return (
     <>
       <div className="col-span-full md:col-span-2 space-y-2">
@@ -14,7 +16,7 @@ const Navigation = () => {
         <ul className="flex flex-col text-sm font-medium capitalize">
           {genres.map((genre) => (
             <li key={genre.name}>
-              <a href={genre.slug}>{genre.name}</a>
+              <Link href={genre.slug}>{genre.name}</Link>
             </li>
           ))}
         </ul>
@@ -27,10 +29,10 @@ const Navigation = () => {
         </h3>
         <ul className="flex flex-col text-sm font-medium">
           <li>
-            <a href="#">How it works</a>
+            <Link href="/resources">{n("articles")}</Link>
           </li>
           <li>
-            <a href="#">Research</a>
+            <Link href="/shop">{n("shop")}</Link>
           </li>
         </ul>
       </div>
@@ -42,9 +44,9 @@ const Navigation = () => {
         </h3>
         <ul className="flex flex-col text-sm font-medium">
           <li>
-            <a href="https://ko-fi.com/tydedev" target="_blank">
+            <Link href="https://ko-fi.com/tydedev" target="_blank">
               Ko-fi
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

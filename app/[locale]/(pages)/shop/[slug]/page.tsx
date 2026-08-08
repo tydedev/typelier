@@ -1,9 +1,13 @@
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import ArticleImage from "@/components/mdx/ArticleImage";
+import DownloadButton from "@/components/mdx/DownloadButton";
 import { Separator } from "@/components/ui/separator";
-import { getContent } from "@/lib/content";
+import { getContent, getTranslatedPathnames } from "@/lib/content";
 import FormatDate from "@/components/FormatDate";
+import { SyncTranslatedPathnames } from "@/components/SyncTranslatedPathnames";
+import { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 type Props = {
   params: Promise<{
@@ -11,6 +15,33 @@ type Props = {
     slug: string;
   }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const resource = getContent("shop", locale, slug);
+
+  if (!resource) return {};
+
+  const translatedPathnames = getTranslatedPathnames(
+    "shop",
+    resource.metadata.id,
+    ["it", "en"],
+  );
+
+  const languages: Record<string, string> = {};
+  for (const [loc, pathname] of Object.entries(translatedPathnames)) {
+    languages[loc] = `${SITE_URL}/${loc}${pathname}`;
+  }
+
+  return {
+    title: resource.metadata.title,
+    description: resource.metadata.description,
+    alternates: {
+      canonical: `${SITE_URL}/${locale}/shop/${slug}`,
+      languages,
+    },
+  };
+}
 
 export default async function ResourcePage({ params }: Props) {
   const { locale, slug } = await params;
@@ -21,8 +52,15 @@ export default async function ResourcePage({ params }: Props) {
     notFound();
   }
 
+  const translatedPathnames = getTranslatedPathnames(
+    "shop",
+    resource.metadata.id,
+    ["it", "en"],
+  );
+
   return (
     <main className="bg-[#FCFBF8]">
+      <SyncTranslatedPathnames pathnames={translatedPathnames} />
       <article
         className="
           mx-auto
@@ -42,7 +80,7 @@ export default async function ResourcePage({ params }: Props) {
               text-3xl
               leading-tight
               text-neutral-900
-              md:text-6xl
+              md:text-5xl
             "
           >
             {resource.metadata.title}
@@ -101,6 +139,7 @@ export default async function ResourcePage({ params }: Props) {
             components={{
               ArticleImage,
               Separator,
+              DownloadButton,
             }}
           />
         </div>

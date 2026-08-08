@@ -3,9 +3,15 @@ import LocaleSwitcher from "../LocaleSwitcher";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Button } from "../ui/button";
-import { Menu } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 import MobileNav from "./MobileNav";
 import Image from "next/image";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 const Header = () => {
   const t = useTranslations("Header");
@@ -26,15 +32,31 @@ const Header = () => {
           Aa | <span className="font-medium">t</span>
         </Link>
         <nav className="hidden md:flex w-full">
-          <ul className="flex gap-6">
+          <ul className="flex items-center gap-6">
             {links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="font-medium font-heading tracking-wider uppercase"
-                >
-                  {t(link.name)}
-                </Link>
+              <li key={link.name}>
+                {"submenu" in link ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        className="m-0 p-0 text-base font-normal ring-0 border-0 focus-visible:ring-offset-0 focus-visible:ring-0 cursor-pointer"
+                        variant="ghost"
+                      >
+                        {t(link.name)} <ChevronDown />
+                      </Button>
+                    </DropdownMenuTrigger>
+
+                    <DropdownMenuContent align="start">
+                      {link.menuItems.map((item) => (
+                        <DropdownMenuItem key={item.href} asChild>
+                          <Link href={item.href}>{t(item.name)}</Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Link href={link.href}>{t(link.name)}</Link>
+                )}
               </li>
             ))}
           </ul>

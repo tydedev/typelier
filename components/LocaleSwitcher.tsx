@@ -4,23 +4,23 @@ import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { Locales } from "@/lib/locales";
 import { cn } from "@/lib/utils";
-import { useLocale, useTranslations } from "next-intl";
-import { useParams } from "next/navigation";
+import { useLocale } from "next-intl";
 import { useState, startTransition } from "react";
 
 type LocaleCode = keyof typeof Locales;
 
 interface Props {
   ghost?: boolean;
+  translatedPathnames?: Partial<Record<LocaleCode, string>>;
 }
 
-const LocaleSwitcher = ({ ghost }: Props) => {
-  const l = useTranslations("Locales");
-  const locale = useLocale();
+import { useTranslatedPathnamesStore } from "@/lib/store/translated-pathnames";
 
+const LocaleSwitcher = ({ ghost }: Omit<Props, "translatedPathnames">) => {
+  const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const params = useParams();
+  const { pathnames: translatedPathnames } = useTranslatedPathnamesStore();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -29,8 +29,10 @@ const LocaleSwitcher = ({ ghost }: Props) => {
 
     setIsLoading(true);
 
+    const nextPathname = translatedPathnames?.[nextLocale] ?? pathname;
+
     startTransition(() => {
-      router.replace({ pathname } as never, {
+      router.replace(nextPathname as never, {
         locale: nextLocale,
       });
     });
@@ -39,7 +41,7 @@ const LocaleSwitcher = ({ ghost }: Props) => {
   const buttonClass = "p-0 h-auto min-h-0 font-normal text-sm cursor-pointer";
 
   return (
-    <div className="flex items-center">
+    <div>
       <Button
         onClick={() => onSelectChange("it")}
         variant="link"
