@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Heading from "@/components/global/Heading";
 import ResourcesContent from "@/components/resources/ResourcesContent";
 import { getContents } from "@/lib/content";
@@ -18,7 +19,9 @@ export default async function Resources({ params }: Props) {
     <>
       <Heading>Resources</Heading>
 
-      <ResourcesContent resources={resources} shopItems={shopItems} />
+      <Suspense fallback={null}>
+        <ResourcesContent resources={resources} shopItems={shopItems} />
+      </Suspense>
     </>
   );
 }
