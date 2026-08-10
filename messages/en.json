@@ -101,5 +101,36 @@
     "subgenre": "Subgenre",
     "headingTitle": "Heading",
     "bodyTitle": "Body"
+  },
+
+  "Common": {
+    "readArticle": "Read article",
+    "viewProduct": "View product"
+  },
+
+  "Blog": {
+    "title": "Articles",
+    "description": "Articles about typography and writing.",
+    "searchResults": "Search results",
+    "noResults": "Nothing found",
+    "for": "for",
+    "noResultsDescription": "Try another keyword or browse another category."
+  },
+
+  "Shop": {
+    "title": "Shop",
+    "download": "Download",
+    "buyNow": "Buy now",
+    "free": "Free"
+  },
+
+  "ProductTabs": {
+    "details": "Details",
+    "specs": "Product specs",
+    "sizes": "Size",
+    "format": "Format",
+    "pages": "Pages",
+    "printing": "Printing",
+    "type": "Type"
   }
 }

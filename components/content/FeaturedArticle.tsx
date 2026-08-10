@@ -1,28 +1,21 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ContentItem } from "@/lib/content";
-import FormatDate from "../FormatDate";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 type Props = {
   item: ContentItem;
 };
 
-export default function ContentCard({ item }: Props) {
+export default function FeaturedArticle({ item }: Props) {
   const { metadata } = item;
   const t = useTranslations("Common");
 
   const href = metadata.type === "article" && `/resources/${item.slug}`;
 
   return (
-    <article
-      className="
-        group
-        overflow-hidden
-        flex
-        flex-col
-      "
-    >
+    <section className="pb-10 border-b border-foreground/10">
       <div className="overflow-hidden aspect-video relative">
         <Link href={href || ""}>
           <Image
@@ -33,20 +26,20 @@ export default function ContentCard({ item }: Props) {
           />
         </Link>
       </div>
-      <p className="text-sm text-foreground/50 uppercase tracking-[0.2em] pt-5 pb-3">
+      <p className="text-base text-foreground/50 uppercase tracking-[0.2em] pt-5 pb-3">
         {metadata.category}
       </p>
-      <h2 className="font-heading text-xl md:text-xl">
+      <h2 className="font-heading text-2xl md:text-4xl">
         <Link href={href || ""} className="hover:text-foreground/65">
           {metadata.title}
         </Link>
       </h2>
-      <p className="text-sm text-foreground/70 line-clamp-5 min-h-20">
-        {metadata.description}
-      </p>
-      <p className="text-sm text-foreground/50 mt-auto">
-        <FormatDate date={metadata.date || ""} />
-      </p>
-    </article>
+      <p className="text-lg text-foreground/70">{metadata.description}</p>
+      {href && (
+        <Button asChild className="font-medium text-md my-5">
+          <Link href={href}>{t("readArticle")} &rarr;</Link>
+        </Button>
+      )}
+    </section>
   );
 }

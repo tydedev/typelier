@@ -10,13 +10,20 @@ export type ContentItem = {
     title: string;
     description: string;
     category: string;
-    type?: "article" | "freebie" | "product";
+    type?: "article" | "product";
     price?: number;
     download?: boolean;
     featured?: boolean;
     image?: string;
     date?: string;
     readingTime?: number;
+    // shop
+    format?: string;
+    size?: string;
+    pages?: number;
+    printing?: string;
+    url?: string;
+    productType: string;
   };
   content: string;
 };

@@ -38,13 +38,13 @@ export default function FontCategorySelect({
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const selected = searchParams.get("category");
+  const selected = searchParams.get("fontCategory");
 
   const formatLabel = (value: string) =>
     value.replace(/\b\w/g, (char) => char.toUpperCase());
 
   const selectCategory = (value: string) => {
-    updateFilter("category", value);
+    updateFilter("fontCategory", value);
     setDrawerOpen(false);
     setPopoverOpen(false);
   };

@@ -3,6 +3,7 @@ import BookPreview from "@/components/preview/BookPreview";
 import { Label } from "@/components/ui/label";
 import pairings from "@/data/fontPairings";
 import { fontRegistry } from "@/lib/fonts";
+import { Link2 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
@@ -33,6 +34,7 @@ async function PairingPage({ params }: Props) {
         <BookPreview
           headingFont={headingFont.className}
           bodyFont={bodyFont.className}
+          headingWeight={pairing.fonts.heading.weight}
         />
       </div>
 
@@ -71,7 +73,9 @@ async function PairingPage({ params }: Props) {
             <Label>{t("fonts.heading")}</Label>
 
             <p className={`${headingFont.className} text-2xl mt-1`}>
-              {pairing.fonts.heading.name}
+              <Link href={pairing.fonts.heading.url} target="_blank">
+                <Link2 size={16} /> {pairing.fonts.heading.name}
+              </Link>
             </p>
           </div>
 
@@ -79,7 +83,9 @@ async function PairingPage({ params }: Props) {
             <Label>{t("fonts.body")}</Label>
 
             <p className={`${bodyFont.className} text-2xl mt-1`}>
-              {pairing.fonts.body.name}
+              <Link href={pairing.fonts.body.url} target="_blank">
+                {pairing.fonts.body.name}
+              </Link>
             </p>
           </div>
         </div>

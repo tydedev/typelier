@@ -92,5 +92,35 @@
     "subgenre": "Subgenre",
     "headingTitle": "Heading",
     "bodyTitle": "Body"
+  },
+
+  "Common": {
+    "readArticle": "Leggi l'articolo",
+    "viewProduct": "Vedi il prodotto"
+  },
+
+  "Blog": {
+    "title": "Articles",
+    "description": "Articles about typography and writing.",
+    "searchResults": "Risultati ricerca",
+    "noResults": "Nessun risultato",
+    "for": "per",
+    "noResultsDescription": "Prova con un'altra parola chiave o un'altra categoria."
+  },
+  "Shop": {
+    "title": "Shop",
+    "download": "Scarica",
+    "buyNow": "Acquista ora",
+    "free": "Gratis"
+  },
+
+  "ProductTabs": {
+    "details": "Dettagli",
+    "specs": "Specifiche prodotto",
+    "sizes": "Dimensioni",
+    "format": "Formato",
+    "pages": "Pagine",
+    "printing": "Stampa",
+    "type": "Tipologia"
   }
 }

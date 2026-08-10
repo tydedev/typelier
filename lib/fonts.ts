@@ -1,19 +1,11 @@
 import {
   Cormorant_Garamond,
   Source_Serif_4,
-  Playfair_Display,
-  Lora,
-  Cinzel,
-  Bebas_Neue,
-  Merriweather,
-  Bodoni_Moda,
-  Libre_Baskerville,
-  Oswald,
-  Space_Grotesk,
-  UnifrakturCook,
-  Crimson_Text,
-  Montserrat,
   Baloo_2,
+  Cinzel,
+  Lora,
+  Merriweather,
+  Playfair_Display,
   Nunito,
 } from "next/font/google";
 
@@ -22,69 +14,9 @@ export const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
 });
 
-export const cinzel = Cinzel({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
 export const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
-});
-
-export const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-export const lora = Lora({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-export const bebasNeue = Bebas_Neue({
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-export const merriweather = Merriweather({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
-export const bodoniModa = Bodoni_Moda({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-export const libreBaskerville = Libre_Baskerville({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
-export const oswald = Oswald({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-export const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-export const unifrakturCook = UnifrakturCook({
-  subsets: ["latin"],
-  weight: ["700"],
-});
-
-export const crimsonText = Crimson_Text({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
-
-export const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
 });
 
 export const baloo2 = Baloo_2({
@@ -97,21 +29,99 @@ export const nunito = Nunito({
   weight: ["400", "500", "600", "700"],
 });
 
+export const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const lora = Lora({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const merriweather = Merriweather({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const fontRegistry = {
   cormorant,
   sourceSerif,
-  playfair,
+  baloo2,
   cinzel,
   lora,
-  bebasNeue,
   merriweather,
-  bodoniModa,
-  libreBaskerville,
-  oswald,
-  spaceGrotesk,
-  unifrakturCook,
-  crimsonText,
-  montserrat,
-  baloo2,
+  playfair,
   nunito,
 };
+
+export const fontMetadata = {
+  cormorant: {
+    name: "Cormorant Garamond",
+    category: "serif",
+    role: "display",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700",
+  },
+
+  sourceSerif: {
+    name: "Source Serif 4",
+    category: "serif",
+    role: "text",
+    weights: ["400", "600", "700"],
+    url: "https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700",
+  },
+
+  baloo2: {
+    name: "Baloo 2",
+    category: "sans-serif",
+    role: "display",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700",
+  },
+
+  cinzel: {
+    name: "Cinzel",
+    category: "serif",
+    role: "display",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700",
+  },
+
+  lora: {
+    name: "Lora",
+    category: "serif",
+    role: "text",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700",
+  },
+
+  merriweather: {
+    name: "Merriweather",
+    category: "serif",
+    role: "text",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;500;600;700",
+  },
+
+  playfair: {
+    name: "Playfair Display",
+    category: "serif",
+    role: "display",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700",
+  },
+
+  nunito: {
+    name: "Nunito",
+    category: "sans-serif",
+    role: "text",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700",
+  },
+} as const;

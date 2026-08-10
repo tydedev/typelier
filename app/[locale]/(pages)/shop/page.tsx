@@ -1,7 +1,7 @@
 import Heading from "@/components/global/Heading";
 import FeaturedContent from "@/components/content/FeaturedContent";
-import ContentGrid from "@/components/content/ContentGrid";
 import { getContents } from "@/lib/content";
+import ProductList from "@/components/shop/ProductList";
 
 type Props = {
   params: Promise<{
@@ -28,7 +28,7 @@ export default async function Resources({ params }: Props) {
         </div>
 
         <div className="mt-24">
-          <ContentGrid items={latest} title="Latest Products" />
+          <ProductList items={latest} title="Latest Products" />
         </div>
       </div>
     </>

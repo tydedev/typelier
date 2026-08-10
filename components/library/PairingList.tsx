@@ -21,7 +21,6 @@ const PairingList = ({ pairings }: PairingListProps) => {
       {pairings.map((pairing) => {
         const headingFont = fontRegistry[pairing.fonts.heading.key];
         const bodyFont = fontRegistry[pairing.fonts.body.key];
-
         const slug = createSlug(pairing.name);
 
         return (

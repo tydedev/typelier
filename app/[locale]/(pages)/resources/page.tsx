@@ -1,6 +1,5 @@
 import Heading from "@/components/global/Heading";
-import FeaturedContent from "@/components/content/FeaturedContent";
-import ContentGrid from "@/components/content/ContentGrid";
+import ResourcesContent from "@/components/resources/ResourcesContent";
 import { getContents } from "@/lib/content";
 
 type Props = {
@@ -13,24 +12,13 @@ export default async function Resources({ params }: Props) {
   const { locale } = await params;
 
   const resources = getContents("resources", locale);
-
-  const featured = resources.find((item) => item.metadata.featured);
-
-  const latest = resources.filter((item) => item.slug !== featured?.slug);
+  const shopItems = getContents("shop", locale);
 
   return (
     <>
       <Heading>Resources</Heading>
 
-      <div className="py-20 flex flex-col">
-        <div className="">
-          {featured && <FeaturedContent item={featured} />}
-        </div>
-
-        <div className="mt-24">
-          <ContentGrid items={latest} title="Latest Resources" />
-        </div>
-      </div>
+      <ResourcesContent resources={resources} shopItems={shopItems} />
     </>
   );
 }

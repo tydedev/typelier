@@ -5,15 +5,15 @@ type BookPreviewProps = {
   bodyFont: string;
   rotate?: string;
   className?: string;
-  showFonts?: boolean;
+  headingWeight?: string;
 };
 
 export default function BookPreview({
   headingFont,
+  headingWeight,
   bodyFont,
   rotate = "",
   className = "",
-  showFonts = false,
 }: BookPreviewProps) {
   const t = useTranslations("BookPage");
   const locale = useLocale();
@@ -31,7 +31,7 @@ export default function BookPreview({
           </p>
 
           <h2
-            className={`${headingFont} mt-5 text-[34px] leading-none text-stone-900`}
+            className={`${headingFont} ${headingWeight} mt-5 text-[34px] leading-none text-stone-900`}
           >
             {t("title")}
           </h2>
@@ -46,13 +46,6 @@ export default function BookPreview({
             indent: (chunks) => <p className="indent-6">{chunks}</p>,
           })}
         </div>
-
-        {showFonts && (
-          <footer className="mt-8 border-t pt-4 text-xs uppercase tracking-widest text-stone-500">
-            <div>{headingFont}</div>
-            <div>{bodyFont}</div>
-          </footer>
-        )}
       </div>
     </article>
   );

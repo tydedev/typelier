@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ContentItem } from "@/lib/content";
+import { useTranslations } from "next-intl";
 
 type Props = {
   item: ContentItem;
@@ -8,18 +9,12 @@ type Props = {
 
 export default function FeaturedContent({ item }: Props) {
   const { metadata } = item;
+  const t = useTranslations("Common");
 
   const href =
     metadata.type === "article"
       ? `/resources/${item.slug}`
       : `/shop/${item.slug}`;
-
-  const label =
-    metadata.type === "product"
-      ? "View product →"
-      : metadata.type === "freebie"
-        ? "Download →"
-        : "Read article →";
 
   return (
     <section
@@ -74,7 +69,9 @@ export default function FeaturedContent({ item }: Props) {
             font-medium
           "
         >
-          {label}
+          {metadata.type === "article"
+            ? `${t("readArticle")} →`
+            : `${t("viewProduct")} →`}
         </Link>
       </div>
 

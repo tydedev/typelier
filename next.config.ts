@@ -4,7 +4,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["192.168.1.*"],
   images: {
-    domains: ["images.unsplash.com"],
+    domains: ["images.unsplash.com", "www.freemockupworld.com"],
   },
 };
 
