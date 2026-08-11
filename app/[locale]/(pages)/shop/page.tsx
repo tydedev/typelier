@@ -2,6 +2,7 @@ import Heading from "@/components/global/Heading";
 import FeaturedContent from "@/components/content/FeaturedContent";
 import { getContents } from "@/lib/content";
 import ProductList from "@/components/shop/ProductList";
+import { Suspense } from "react";
 
 type Props = {
   params: Promise<{
@@ -26,7 +27,9 @@ export default async function Resources({ params }: Props) {
         </div>
 
         <div className="mt-24">
-          <ProductList items={latest} title="Latest Products" />
+          <Suspense fallback={null}>
+            <ProductList items={latest} title="Latest Products" />
+          </Suspense>
         </div>
       </div>
     </>
