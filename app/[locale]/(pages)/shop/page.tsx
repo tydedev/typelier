@@ -13,9 +13,7 @@ export default async function Resources({ params }: Props) {
   const { locale } = await params;
 
   const products = getContents("shop", locale);
-
   const featured = products.find((item) => item.metadata.featured);
-
   const latest = products.filter((item) => item.slug !== featured?.slug);
 
   return (

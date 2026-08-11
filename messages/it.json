@@ -111,7 +111,18 @@
     "title": "Shop",
     "download": "Scarica",
     "buyNow": "Acquista ora",
-    "free": "Gratis"
+    "free": "Gratis",
+    "noResults": "Nessun risultato",
+    "category": "Categoria",
+    "format": "Formato",
+    "categories": "Categorie",
+    "searchItems": "Cerca i prodotti...",
+    "options": {
+      "printables": "Stampabili",
+      "books": "Libri",
+      "guides": "Guide",
+      "all": "Tutti"
+    }
   },
 
   "ProductTabs": {

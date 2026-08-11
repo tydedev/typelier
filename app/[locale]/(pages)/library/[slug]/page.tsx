@@ -73,7 +73,11 @@ async function PairingPage({ params }: Props) {
             <Label>{t("fonts.heading")}</Label>
 
             <p className={`${headingFont.className} text-2xl mt-1`}>
-              <Link href={pairing.fonts.heading.url} target="_blank">
+              <Link
+                href={pairing.fonts.heading.url}
+                target="_blank"
+                className="flex items-center gap-1"
+              >
                 <Link2 size={16} /> {pairing.fonts.heading.name}
               </Link>
             </p>
@@ -83,7 +87,12 @@ async function PairingPage({ params }: Props) {
             <Label>{t("fonts.body")}</Label>
 
             <p className={`${bodyFont.className} text-2xl mt-1`}>
-              <Link href={pairing.fonts.body.url} target="_blank">
+              <Link
+                href={pairing.fonts.body.url}
+                target="_blank"
+                className="flex items-center gap-1"
+              >
+                <Link2 size={16} />
                 {pairing.fonts.body.name}
               </Link>
             </p>

@@ -1,9 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ReactNode, useState } from "react";
 
 type ProductTabsProps = {
   details: ReactNode;
@@ -16,75 +14,119 @@ type ProductTabsProps = {
   };
 };
 
-const tabs = ["details", "specs"];
+const tabs = ["details", "specs"] as const;
 
 export default function ProductTabs({
   details,
   specifications,
 }: ProductTabsProps) {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>("details");
+
   const t = useTranslations("ProductTabs");
 
   return (
-    <div className="col-span-full mt-4">
-      <Separator />
+    <section>
+      {/* Tabs */}
+      <nav className="flex border-b border-foreground/15">
+        {tabs.map((tab) => {
+          const active = activeTab === tab;
 
-      <div className="mt-6 flex items-center gap-2">
-        {tabs.map((tabName, index) => (
-          <Button
-            key={tabName}
-            variant={index === activeTab ? "default" : "ghost"}
-            onClick={() => setActiveTab(index)}
+          return (
+            <button
+              key={tab}
+              type="button"
+              onClick={() => setActiveTab(tab)}
+              className={`relative px-0 pb-3 mr-8 text-[10px] font-medium uppercase tracking-[0.15em] transition-colors ${
+                active
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {t(tab)}
+
+              {active && (
+                <span className="absolute inset-x-0 -bottom-px h-px bg-foreground" />
+              )}
+            </button>
+          );
+        })}
+      </nav>
+
+      {/* Content */}
+      <div className="mt-10">
+        {activeTab === "details" && (
+          <div
+            className="
+              prose
+              prose-neutral
+              max-w-3xl
+
+              prose-headings:font-serif
+              prose-headings:font-normal
+              prose-headings:tracking-tight
+
+              prose-h2:mt-10
+              prose-h2:text-3xl
+
+              prose-p:leading-relaxed
+              prose-p:text-foreground/80
+
+              prose-li:text-foreground/80
+            "
           >
-            {t(tabName)}
-          </Button>
-        ))}
-      </div>
-
-      <div className="mt-8 max-w-3xl">
-        {activeTab === 0 && details}
-
-        {activeTab === 1 && (
-          <div>
-            <dl className="mt-6 divide-y divide-foreground/10 border-y border-foreground/10">
-              {specifications.format && (
-                <div className="flex justify-between gap-6 py-4">
-                  <dt className="text-foreground/50">{t("format")}</dt>
-                  <dd className="font-medium">{specifications.format}</dd>
-                </div>
-              )}
-
-              {specifications.size && (
-                <div className="flex justify-between gap-6 py-4">
-                  <dt className="text-foreground/50">{t("size")}</dt>
-                  <dd className="font-medium">{specifications.size}</dd>
-                </div>
-              )}
-
-              {specifications.pages && (
-                <div className="flex justify-between gap-6 py-4">
-                  <dt className="text-foreground/50">{t("pages")}</dt>
-                  <dd className="font-medium">{specifications.pages}</dd>
-                </div>
-              )}
-
-              {specifications.productType && (
-                <div className="flex justify-between gap-6 py-4">
-                  <dt className="text-foreground/50">{t("type")}</dt>
-                  <dd className="font-medium">{specifications.productType}</dd>
-                </div>
-              )}
-
-              {specifications.printing && (
-                <div className="flex justify-between gap-6 py-4">
-                  <dt className="text-foreground/50">{t("printing")}</dt>
-                  <dd className="font-medium">{specifications.printing}</dd>
-                </div>
-              )}
-            </dl>
+            {details}
           </div>
         )}
+
+        {activeTab === "specs" && (
+          <dl className="max-w-3xl divide-y divide-foreground/10 border-y border-foreground/10">
+            {specifications.format && (
+              <div className="grid grid-cols-2 gap-6 py-4 text-sm">
+                <dt className="text-muted-foreground">{t("format")}</dt>
+                <dd className="text-right font-medium">
+                  {specifications.format}
+                </dd>
+              </div>
+            )}
+
+            {specifications.size && (
+              <div className="grid grid-cols-2 gap-6 py-4 text-sm">
+                <dt className="text-muted-foreground">{t("size")}</dt>
+                <dd className="text-right font-medium">
+                  {specifications.size}
+                </dd>
+              </div>
+            )}
+
+            {specifications.pages && (
+              <div className="grid grid-cols-2 gap-6 py-4 text-sm">
+                <dt className="text-muted-foreground">{t("pages")}</dt>
+                <dd className="text-right font-medium">
+                  {specifications.pages}
+                </dd>
+              </div>
+            )}
+
+            {specifications.productType && (
+              <div className="grid grid-cols-2 gap-6 py-4 text-sm">
+                <dt className="text-muted-foreground">{t("type")}</dt>
+                <dd className="text-right font-medium">
+                  {specifications.productType}
+                </dd>
+              </div>
+            )}
+
+            {specifications.printing && (
+              <div className="grid grid-cols-2 gap-6 py-4 text-sm">
+                <dt className="text-muted-foreground">{t("printing")}</dt>
+                <dd className="text-right font-medium">
+                  {specifications.printing}
+                </dd>
+              </div>
+            )}
+          </dl>
+        )}
       </div>
-    </div>
+    </section>
   );
 }

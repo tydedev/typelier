@@ -58,7 +58,9 @@ export default function Search({
     // Quando cambia un filtro, torniamo alla prima pagina.
     params.delete("page");
 
-    router.push(`/library?${params.toString()}`);
+    router.push(`/library?${params.toString()}`, {
+      scroll: false,
+    });
   };
 
   const changeView = (columns: keyof typeof views) => {

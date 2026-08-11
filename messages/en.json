@@ -121,7 +121,18 @@
     "title": "Shop",
     "download": "Download",
     "buyNow": "Buy now",
-    "free": "Free"
+    "free": "Free",
+    "category": "Category",
+    "format": "Format",
+    "categories": "Categories",
+    "noResults": "No results",
+    "searchItems": "Search products...",
+    "options": {
+      "printables": "Printables",
+      "books": "Books",
+      "guides": "Guides",
+      "all": "All"
+    }
   },
 
   "ProductTabs": {

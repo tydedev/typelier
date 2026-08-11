@@ -22,7 +22,7 @@ function Home() {
         new Date(b.metadata.date!).getTime() -
         new Date(a.metadata.date!).getTime(),
     )
-    .slice(0, 2);
+    .slice(0, 3);
 
   return (
     <>
@@ -34,7 +34,9 @@ function Home() {
 
       <Featured />
 
-      {featuredArticle && <FeaturedArticle item={featuredArticle} />}
+      {featuredArticle && (
+        <FeaturedArticle item={featuredArticle} lastArticles={resources} />
+      )}
 
       {latestProducts.length > 0 && <ShopPreview items={latestProducts} />}
     </>

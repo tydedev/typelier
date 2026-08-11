@@ -66,7 +66,7 @@ export const fontMetadata = {
     category: "serif",
     role: "display",
     weights: ["400", "500", "600", "700"],
-    url: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700",
+    url: "https://fonts.google.com/specimen/Cormorant+Garamond",
   },
 
   sourceSerif: {
@@ -74,7 +74,7 @@ export const fontMetadata = {
     category: "serif",
     role: "text",
     weights: ["400", "600", "700"],
-    url: "https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700",
+    url: "https://fonts.google.com/specimen/Source+Serif+4",
   },
 
   baloo2: {
@@ -82,7 +82,7 @@ export const fontMetadata = {
     category: "sans-serif",
     role: "display",
     weights: ["400", "500", "600", "700"],
-    url: "https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700",
+    url: "https://fonts.google.com/specimen/Baloo+2",
   },
 
   cinzel: {
@@ -90,7 +90,7 @@ export const fontMetadata = {
     category: "serif",
     role: "display",
     weights: ["400", "500", "600", "700"],
-    url: "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700",
+    url: "https://fonts.google.com/specimen/Cinzel",
   },
 
   lora: {
@@ -98,7 +98,7 @@ export const fontMetadata = {
     category: "serif",
     role: "text",
     weights: ["400", "500", "600", "700"],
-    url: "https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700",
+    url: "https://fonts.google.com/specimen/Lora",
   },
 
   merriweather: {
@@ -106,7 +106,7 @@ export const fontMetadata = {
     category: "serif",
     role: "text",
     weights: ["400", "500", "600", "700"],
-    url: "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;500;600;700",
+    url: "https://fonts.google.com/specimen/Merriweather",
   },
 
   playfair: {
@@ -114,7 +114,7 @@ export const fontMetadata = {
     category: "serif",
     role: "display",
     weights: ["400", "500", "600", "700"],
-    url: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700",
+    url: "https://fonts.google.com/specimen/Playfair+Display",
   },
 
   nunito: {
@@ -122,6 +122,6 @@ export const fontMetadata = {
     category: "sans-serif",
     role: "text",
     weights: ["400", "500", "600", "700"],
-    url: "https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700",
+    url: "https://fonts.google.com/specimen/Nunito",
   },
 } as const;

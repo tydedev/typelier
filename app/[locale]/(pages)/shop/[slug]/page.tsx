@@ -6,9 +6,8 @@ import ProductTabs from "@/components/shop/ProductTabs";
 import { Separator } from "@/components/ui/separator";
 import { getContent, getTranslatedPathnames } from "@/lib/content";
 import { SyncTranslatedPathnames } from "@/components/SyncTranslatedPathnames";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,13 +21,13 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
 
-  const resource = getContent("shop", locale, slug);
+  const product = getContent("shop", locale, slug);
 
-  if (!resource) return {};
+  if (!product) return {};
 
   const translatedPathnames = getTranslatedPathnames(
     "shop",
-    resource.metadata.id,
+    product.metadata.id,
     ["it", "en"],
   );
 
@@ -39,8 +38,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: resource.metadata.title,
-    description: resource.metadata.description,
+    title: product.metadata.title,
+    description: product.metadata.description,
     alternates: {
       canonical: `${SITE_URL}/${locale}/shop/${slug}`,
       languages,
@@ -48,113 +47,120 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ResourcePage({ params }: Props) {
+export default async function ProductPage({ params }: Props) {
   const { locale, slug } = await params;
 
-  const resource = getContent("shop", locale, slug);
+  const product = getContent("shop", locale, slug);
 
-  if (!resource) {
+  if (!product) {
     notFound();
   }
 
   const translatedPathnames = getTranslatedPathnames(
     "shop",
-    resource.metadata.id,
+    product.metadata.id,
     ["it", "en"],
   );
 
-  const isFree = resource.metadata.price === 0;
+  const { metadata } = product;
+  const isFree = metadata.price === 0;
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-16">
+    <main className="mx-auto max-w-6xl px-6 py-16 md:py-24">
       <SyncTranslatedPathnames pathnames={translatedPathnames} />
 
-      <article className="grid grid-cols-1 gap-10 md:grid-cols-2">
-        {/* Preview */}
-        <div className="flex min-h-[420px] items-center justify-center bg-foreground/5 p-8 md:min-h-[500px]">
-          <div className="flex max-h-[420px] max-w-xl items-center justify-center">
-            {/* Product preview */}
-            {resource.metadata.image && (
-              <Image
-                width={500}
-                height={500}
-                src={resource.metadata.image}
-                alt={resource.metadata.title}
-                className="h-full w-full object-contain"
-              />
-            )}
+      {/* Product */}
+      <article className="border-t border-foreground/15 pt-6">
+        <div className="grid gap-10 md:grid-cols-12 md:gap-14">
+          {/* Preview */}
+          <div className="md:col-span-7">
+            <Link
+              href={metadata.url || "#"}
+              target={metadata.url ? "_blank" : undefined}
+              rel={metadata.url ? "noopener noreferrer" : undefined}
+              className="group block"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-foreground/[0.035]">
+                {metadata.image && (
+                  <Image
+                    src={metadata.image}
+                    alt={metadata.title}
+                    fill
+                    priority
+                    className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.015]"
+                  />
+                )}
+              </div>
+            </Link>
+          </div>
+
+          {/* Information */}
+          <div className="flex flex-col justify-center md:col-span-5">
+            <div>
+              {metadata.productType && (
+                <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-muted-foreground">
+                  {metadata.productType}
+                </p>
+              )}
+
+              <h1 className="mt-4 font-serif text-4xl leading-[0.95] tracking-tight md:text-5xl">
+                {metadata.title}
+              </h1>
+
+              {metadata.description && (
+                <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                  {metadata.description}
+                </p>
+              )}
+            </div>
+
+            <div className="mt-8 border-t border-foreground/15 pt-5">
+              <div className="flex items-center justify-between">
+                <span className="text-xl font-medium">
+                  {isFree ? "FREE" : `€${metadata.price}`}
+                </span>
+
+                {metadata.url && (
+                  <Link
+                    href={metadata.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-medium uppercase tracking-[0.12em] transition-colors hover:text-muted-foreground"
+                  >
+                    {isFree ? "Download" : "Buy now"} →
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
         </div>
+      </article>
 
-        {/* Product information */}
-        <div className="flex flex-col justify-center">
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-foreground/50">
-            {resource.metadata.category}
-          </p>
-
-          <h1
-            className="
-              font-heading
-              text-3xl
-              leading-tight
-              text-neutral-900
-              md:text-5xl
-            "
-          >
-            {resource.metadata.title}
-          </h1>
-
-          <p
-            className="
-              mt-6
-              max-w-xl
-              text-base
-              leading-relaxed
-              text-neutral-600
-            "
-          >
-            {resource.metadata.description}
-          </p>
-
-          <div className="mt-8 flex items-center gap-6">
-            <span className="text-2xl font-medium">
-              {isFree ? "FREE" : `€${resource.metadata.price}`}
-            </span>
-
-            <Button size="lg" asChild>
-              <Link href={resource.metadata.url || "#"} target="_blank">
-                {isFree ? "Download" : "Buy now"}
-              </Link>
-            </Button>
-          </div>
-        </div>
-
-        {/* Tabs */}
+      {/* Details */}
+      <section className="mt-20 border-t border-foreground/15 pt-6 md:mt-28">
         <ProductTabs
           details={
             <div
               className="
                 prose
                 prose-neutral
-                max-w-none
+                max-w-3xl
 
-                prose-headings:font-heading
-                prose-headings:text-neutral-900
-                prose-headings:font-medium
+                prose-headings:font-serif
+                prose-headings:font-normal
+                prose-headings:tracking-tight
 
-                prose-h2:mt-12
+                prose-h2:mt-10
                 prose-h2:text-3xl
 
-                prose-p:mx-0
-                prose-p:m-1
-                prose-p:leading-normal
-                prose-p:text-base
+                prose-p:leading-relaxed
+                prose-p:text-foreground/80
 
-                prose-li:text-neutral-700
+                prose-li:text-foreground/80
               "
             >
               <MDXRemote
-                source={resource.content}
+                source={product.content}
                 components={{
                   ArticleImage,
                   Separator,
@@ -164,14 +170,14 @@ export default async function ResourcePage({ params }: Props) {
             </div>
           }
           specifications={{
-            format: resource.metadata.format,
-            size: resource.metadata.size,
-            pages: resource.metadata.pages,
-            productType: resource.metadata.productType,
-            printing: resource.metadata.printing,
+            format: metadata.format,
+            size: metadata.size,
+            pages: metadata.pages,
+            productType: metadata.productType,
+            printing: metadata.printing,
           }}
         />
-      </article>
+      </section>
     </main>
   );
 }

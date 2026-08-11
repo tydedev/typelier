@@ -65,7 +65,9 @@ export default function ResourcesContent({ resources, shopItems }: Props) {
 
     const queryString = params.toString();
 
-    router.push(queryString ? `/resources?${queryString}` : "/resources");
+    router.push(queryString ? `/resources?${queryString}` : "/resources", {
+      scroll: false,
+    });
 
     if (key === "q") {
       setQuery(value);
@@ -74,7 +76,9 @@ export default function ResourcesContent({ resources, shopItems }: Props) {
 
   const clearFilters = () => {
     setQuery("");
-    router.push("/resources");
+    router.push("/resources", {
+      scroll: false,
+    });
   };
 
   const isFiltering = query.trim().length > 0 || selectedCategory.length > 0;

@@ -4,7 +4,20 @@ import createNextIntlPlugin from "next-intl/plugin";
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["192.168.1.*"],
   images: {
-    domains: ["images.unsplash.com", "www.freemockupworld.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.freemockupworld.com",
+      },
+    ],
   },
 };
 

@@ -9,6 +9,7 @@ export type ContentItem = {
     id: string;
     title: string;
     description: string;
+    shopCategory?: string;
     category: string;
     type?: "article" | "product";
     price?: number;
@@ -71,12 +72,16 @@ export function getContents(
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => {
       const slug = file.replace(".mdx", "");
+      const item = getContent(folder, locale, slug);
 
-      return getContent(folder, locale, slug);
+      if (item && !item.metadata.shopCategory) {
+        console.log("MISSING shopCategory:", item.slug);
+      }
+
+      return item;
     })
     .filter((item): item is ContentItem => item !== null);
 }
-
 export function getTranslatedSlug(
   folder: "resources" | "shop",
   id: string,

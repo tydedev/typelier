@@ -3,21 +3,33 @@ import type { ContentItem } from "@/lib/content";
 
 type Props = {
   item: ContentItem;
+  lastArticles?: ContentItem[];
 };
 
-export default function FeaturedArticle({ item }: Props) {
+export default function FeaturedArticle({ item, lastArticles = [] }: Props) {
   const { title, description, category, readingTime } = item.metadata;
+
+  const latestArticles = [...lastArticles]
+    .filter((article) => article.metadata?.date)
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.date!).getTime() -
+        new Date(a.metadata.date!).getTime(),
+    )
+    .slice(0, 3);
 
   return (
     <section className="mt-32 border-t border-foreground/15 pt-6">
       <div className="grid gap-10 md:grid-cols-12 md:gap-12">
-        <div className="md:col-span-3">
+        {/* Label */}
+        <div className="md:col-span-4">
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
             From the Journal
           </p>
         </div>
 
-        <div className="md:col-span-7">
+        {/* Featured article */}
+        <div className="md:col-span-6">
           <Link href={`/resources/${item.slug}`} className="group block">
             <p className="font-mono text-xs text-muted-foreground">01</p>
 
@@ -37,6 +49,7 @@ export default function FeaturedArticle({ item }: Props) {
               {readingTime && (
                 <>
                   <span className="text-muted-foreground">·</span>
+
                   <span className="text-muted-foreground">
                     {readingTime} min read
                   </span>
@@ -49,6 +62,43 @@ export default function FeaturedArticle({ item }: Props) {
             </div>
           </Link>
         </div>
+
+        {/* Latest articles */}
+        {latestArticles.length > 0 && (
+          <div className="md:col-span-6 md:col-start-5">
+            <div className="mt-12 grid gap-x-4 gap-y-10 border-t border-foreground/15 pt-6 md:grid-cols-3">
+              {latestArticles.map((article, index) => (
+                <Link
+                  key={article.slug}
+                  href={`/resources/${article.slug}`}
+                  className="group block"
+                >
+                  <div className="flex items-baseline justify-between">
+                    <span className="font-mono text-[10px] text-muted-foreground">
+                      {String(index + 2).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-5 font-serif text-xl leading-[1] tracking-tight">
+                    {article.metadata.title}
+                  </h3>
+
+                  {article.metadata.description && (
+                    <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                      {article.metadata.description}
+                    </p>
+                  )}
+
+                  {article.metadata.category && (
+                    <p className="mt-4 text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                      {article.metadata.category}
+                    </p>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

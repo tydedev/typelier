@@ -10,7 +10,7 @@ const Copyrights = () => {
       <p className="max-w-sm">
         &copy; {new Date().getFullYear()} Typelier. {t("copyright")}
       </p>
-      <p className="max-w-sm flex items-center justify-center gap-x-1">
+      <p className="max-w-sm flex items-center md:justify-center gap-x-1">
         {t("developer")}
         <Link
           href="https://tydedev.it"
@@ -19,7 +19,7 @@ const Copyrights = () => {
         >
           @tydedev
         </Link>
-        <Button size="icon-sm" asChild>
+        <Button size="icon-sm" asChild variant="ghost">
           <Link href="https://www.instagram.com/tydedev/" target="_blank">
             <FaInstagram size={20} />
           </Link>
