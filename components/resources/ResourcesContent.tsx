@@ -1,13 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
+
 import FeaturedResources from "@/components/resources/FeaturedResources";
 import SearchResults from "@/components/resources/SearchResults";
 import ResourcesSidebar from "@/components/resources/ResourcesSidebar";
 import ResourceList from "@/components/resources/ResourceList";
 import type { ContentItem } from "@/lib/content";
-import { useTranslations } from "next-intl";
 
 type Props = {
   resources: ContentItem[];
@@ -16,8 +17,10 @@ type Props = {
 
 export default function ResourcesContent({ resources, shopItems }: Props) {
   const t = useTranslations("Blog");
+
   const searchParams = useSearchParams();
   const router = useRouter();
+  const pathname = usePathname();
 
   const initialQuery = searchParams.get("q") ?? "";
   const selectedCategory = searchParams.get("category") ?? "";
@@ -65,7 +68,7 @@ export default function ResourcesContent({ resources, shopItems }: Props) {
 
     const queryString = params.toString();
 
-    router.push(queryString ? `/resources?${queryString}` : "/resources", {
+    router.replace(queryString ? `${pathname}?${queryString}` : pathname, {
       scroll: false,
     });
 
@@ -76,7 +79,8 @@ export default function ResourcesContent({ resources, shopItems }: Props) {
 
   const clearFilters = () => {
     setQuery("");
-    router.push("/resources", {
+
+    router.replace(pathname, {
       scroll: false,
     });
   };
@@ -110,6 +114,7 @@ export default function ResourcesContent({ resources, shopItems }: Props) {
 
                 <p className="mt-6 font-serif text-3xl tracking-tight">
                   {t("noResults")}
+
                   {query && (
                     <>
                       {" "}
@@ -137,7 +142,7 @@ export default function ResourcesContent({ resources, shopItems }: Props) {
         </main>
 
         {/* Desktop sidebar */}
-        <aside className="hidden h-fit md:col-span-3 md:block md:col-start-6 lg:col-span-3 lg:col-start-10">
+        <aside className="hidden h-fit md:col-span-3 md:col-start-6 md:block lg:col-span-3 lg:col-start-10">
           <ResourcesSidebar
             query={query}
             setQuery={setQuery}
