@@ -7,15 +7,22 @@ type Props = {
 };
 
 export default function FeaturedArticle({ item, lastArticles = [] }: Props) {
-  const { title, description, category, readingTime } = item.metadata;
-
-  const latestArticles = [...lastArticles]
+  const allArticles = [item, ...lastArticles]
     .filter((article) => article.metadata?.date)
     .sort(
       (a, b) =>
         new Date(b.metadata.date!).getTime() -
         new Date(a.metadata.date!).getTime(),
-    )
+    );
+
+  const latestArticle = allArticles[0];
+
+  if (!latestArticle) return null;
+
+  const { title, description, category, readingTime } = latestArticle.metadata;
+
+  const latestArticles = allArticles
+    .filter((article) => article.slug !== latestArticle.slug)
     .slice(0, 3);
 
   return (
@@ -28,9 +35,12 @@ export default function FeaturedArticle({ item, lastArticles = [] }: Props) {
           </p>
         </div>
 
-        {/* Featured article */}
+        {/* Latest article */}
         <div className="md:col-span-6">
-          <Link href={`/resources/${item.slug}`} className="group block">
+          <Link
+            href={`/resources/${latestArticle.slug}`}
+            className="group block"
+          >
             <p className="font-mono text-xs text-muted-foreground">01</p>
 
             <h2 className="mt-5 max-w-3xl font-serif text-4xl leading-[0.95] tracking-tight md:text-6xl">
@@ -63,7 +73,7 @@ export default function FeaturedArticle({ item, lastArticles = [] }: Props) {
           </Link>
         </div>
 
-        {/* Latest articles */}
+        {/* Previous articles */}
         {latestArticles.length > 0 && (
           <div className="md:col-span-6 md:col-start-5">
             <div className="mt-12 grid gap-x-4 gap-y-10 border-t border-foreground/15 pt-6 md:grid-cols-3">
@@ -73,11 +83,9 @@ export default function FeaturedArticle({ item, lastArticles = [] }: Props) {
                   href={`/resources/${article.slug}`}
                   className="group block"
                 >
-                  <div className="flex items-baseline justify-between">
-                    <span className="font-mono text-[10px] text-muted-foreground">
-                      {String(index + 2).padStart(2, "0")}
-                    </span>
-                  </div>
+                  <span className="font-mono text-[10px] text-muted-foreground">
+                    {String(index + 2).padStart(2, "0")}
+                  </span>
 
                   <h3 className="mt-5 font-serif text-xl leading-[1] tracking-tight">
                     {article.metadata.title}

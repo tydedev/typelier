@@ -18,6 +18,8 @@ export type ContentItem = {
     image?: string;
     date?: string;
     readingTime?: number;
+    first?: boolean;
+    second?: boolean;
     // shop
     format?: string;
     size?: string;

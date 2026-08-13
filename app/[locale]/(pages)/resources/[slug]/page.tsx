@@ -1,12 +1,14 @@
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import ArticleImage from "@/components/mdx/ArticleImage";
+import BookPreview from "@/components/preview/BookPreview";
 import { Separator } from "@/components/ui/separator";
 import { getContent, getTranslatedPathnames } from "@/lib/content";
 import FormatDate from "@/components/FormatDate";
 import { SyncTranslatedPathnames } from "@/components/SyncTranslatedPathnames";
 import { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
+import { cinzel, lora } from "@/lib/fonts";
 
 type Props = {
   params: Promise<{
@@ -14,6 +16,11 @@ type Props = {
     slug: string;
   }>;
 };
+
+interface BookPreviewProps {
+  headingFont: string;
+  bodyFont: string;
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
@@ -137,6 +144,16 @@ export default async function ResourcePage({ params }: Props) {
             components={{
               ArticleImage,
               Separator,
+              BookPreview: (props: BookPreviewProps) => (
+                <div className="not-prose flex justify-center">
+                  <BookPreview
+                    {...props}
+                    headingFont={cinzel.className}
+                    bodyFont={lora.className}
+                    className="mt-10"
+                  />
+                </div>
+              ),
             }}
           />
         </div>
