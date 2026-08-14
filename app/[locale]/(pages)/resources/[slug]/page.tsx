@@ -9,6 +9,7 @@ import { SyncTranslatedPathnames } from "@/components/SyncTranslatedPathnames";
 import { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
 import { cinzel, lora } from "@/lib/fonts";
+import { routing } from "@/i18n/routing";
 
 type Props = {
   params: Promise<{
@@ -23,14 +24,14 @@ interface BookPreviewProps {
 }
 
 export function generateStaticParams() {
-  const locales = ["it", "en"];
-
-  return locales.flatMap((locale) =>
+  const params = routing.locales.flatMap((locale) =>
     getContents("resources", locale).map((resource) => ({
       locale,
       slug: resource.slug,
     })),
   );
+  console.log("STATIC PARAMS:", JSON.stringify(params, null, 2));
+  return params;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

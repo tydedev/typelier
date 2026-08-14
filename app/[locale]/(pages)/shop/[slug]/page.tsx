@@ -10,6 +10,7 @@ import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
+import { routing } from "@/i18n/routing";
 
 type Props = {
   params: Promise<{
@@ -19,14 +20,14 @@ type Props = {
 };
 
 export function generateStaticParams() {
-  const locales = ["it", "en"];
-
-  return locales.flatMap((locale) =>
-    getContents("shop", locale).map((item) => ({
+  const params = routing.locales.flatMap((locale) =>
+    getContents("resources", locale).map((resource) => ({
       locale,
-      slug: item.slug,
+      slug: resource.slug,
     })),
   );
+  console.log("STATIC PARAMS:", JSON.stringify(params, null, 2));
+  return params;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
