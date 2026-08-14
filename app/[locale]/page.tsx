@@ -6,6 +6,7 @@ import ShopPreview from "@/components/homepage/ShopPreview";
 import Featured from "@/components/library/Featured";
 import { getContents } from "@/lib/content";
 import { useLocale } from "next-intl";
+import Support from "@/components/homepage/Support";
 
 function Home() {
   const locale = useLocale();
@@ -39,6 +40,8 @@ function Home() {
       )}
 
       {latestProducts.length > 0 && <ShopPreview items={latestProducts} />}
+
+      <Support />
     </>
   );
 }

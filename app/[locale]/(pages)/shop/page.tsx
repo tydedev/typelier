@@ -14,23 +14,32 @@ export default async function Resources({ params }: Props) {
   const { locale } = await params;
 
   const products = getContents("shop", locale);
-  const featured = products.find((item) => item.metadata.featured);
-  const latest = products.filter((item) => item.slug !== featured?.slug);
+
+  const sortedProducts = [...products].sort(
+    (a, b) =>
+      new Date(b.metadata.date!).getTime() -
+      new Date(a.metadata.date!).getTime(),
+  );
+
+  const latest = sortedProducts[0];
+  const remaining = sortedProducts.slice(1);
 
   return (
     <>
-      <Heading>products</Heading>
+      <div className="flex flex-col py-20">
+        {latest && (
+          <div>
+            <FeaturedContent item={latest} />
+          </div>
+        )}
 
-      <div className="py-20 flex flex-col">
-        <div className="">
-          {featured && <FeaturedContent item={featured} />}
-        </div>
-
-        <div className="mt-24">
-          <Suspense fallback={null}>
-            <ProductList items={latest} title="Latest Products" />
-          </Suspense>
-        </div>
+        {remaining.length > 0 && (
+          <div className="mt-24">
+            <Suspense fallback={null}>
+              <ProductList items={remaining} title="Latest Products" />
+            </Suspense>
+          </div>
+        )}
       </div>
     </>
   );

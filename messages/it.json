@@ -53,8 +53,9 @@
 
   "BookPage": {
     "chapter": "Capitolo Uno",
+    "excerpt": "Estratto da <i>Alice nel Paese delle Meraviglie</i> di Lewis Carroll",
     "title": "Nella Conigliera",
-    "body": "<p>Alice cominciava a sentirsi assai stanca di sedere sul poggetto accanto a sua sorella, senza far niente: aveva una o due volte data un'occhiata al libro che la sorella stava leggendo, ma non v'erano nè dialoghi nè figure, — e a che serve un libro, — pensò Alice, — senza dialoghi nè figure?</p><indent>E si domandava alla meglio, (perchè la canicola l'aveva mezza assonnata e istupidita), se per il piacere di fare una ghirlanda di margherite mettesse conto di levarsi a raccogliere i fiori, quand'ecco un coniglio bianco dagli occhi rosei passarle accanto, quasi sfiorandola.</indent><indent>Non c'era troppo da meravigliarsene, nè Alice pensò che fosse troppo strano sentir parlare il Coniglio, il quale diceva fra se: “Oimè! oimè! ho fatto tardi!”</indent>",
+    "body": "<p>Alice cominciava a sentirsi assai stanca di sedere sul poggetto accanto a sua sorella, senza far niente: aveva una o due volte data un'occhiata al libro che la sorella stava leggendo, ma non v'erano né dialoghi né figure, — e a che serve un libro, — pensò Alice, — senza dialoghi né figure?</p><indent>E si domandava alla meglio, (perchè la canicola l'aveva mezza assonnata e istupidita), se per il piacere di fare una ghirlanda di margherite mettesse conto di levarsi a raccogliere i fiori, quand'ecco un coniglio bianco dagli occhi rosei passarle accanto, quasi sfiorandola.</indent><indent>Non c'era troppo da meravigliarsene, né Alice pensò che fosse troppo strano sentir parlare il Coniglio, il quale diceva fra se: “Oimè! oimè! ho fatto tardi!”</indent>",
     "body_short": "Alice cominciava a sentirsi assai stanca di sedere sul poggetto accanto a sua sorella, senza far niente: aveva una o due volte data un'occhiata al libro che la sorella stava leggendo..."
   },
 
@@ -133,5 +134,10 @@
     "pages": "Pagine",
     "printing": "Stampa",
     "type": "Tipologia"
+  },
+
+  "Support": {
+    "label": "Typelier è GRATIS",
+    "description": "Se ti piace il progetto, puoi supportarmi con una donazione su <link>Ko-Fi</link>."
   }
 }

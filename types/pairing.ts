@@ -28,6 +28,8 @@ export interface Pairing {
       category: string;
       role: string;
       weight?: string;
+      url?: string;
+      size?: string;
     };
 
     body: {
@@ -36,6 +38,8 @@ export interface Pairing {
       category: string;
       role: string;
       weight?: string;
+      url?: string;
+      size?: string;
     };
   };
 

@@ -1,5 +1,5 @@
 import {
-  Cormorant_Garamond,
+  EB_Garamond,
   Source_Serif_4,
   Baloo_2,
   Cinzel,
@@ -7,11 +7,35 @@ import {
   Merriweather,
   Playfair_Display,
   Nunito,
+  Bokor,
+  Audiowide,
+  Syne_Mono,
+  Grenze_Gotisch,
 } from "next/font/google";
 
-export const cormorant = Cormorant_Garamond({
+export const ebGaramond = EB_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+export const grenzeGotisch = Grenze_Gotisch({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+export const syneMono = Syne_Mono({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+export const audiowide = Audiowide({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+export const bokor = Bokor({
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 export const sourceSerif = Source_Serif_4({
@@ -50,7 +74,6 @@ export const playfair = Playfair_Display({
 });
 
 export const fontRegistry = {
-  cormorant,
   sourceSerif,
   baloo2,
   cinzel,
@@ -58,15 +81,49 @@ export const fontRegistry = {
   merriweather,
   playfair,
   nunito,
+  bokor,
+  audiowide,
+  syneMono,
+  grenzeGotisch,
+  ebGaramond,
 };
 
 export const fontMetadata = {
-  cormorant: {
-    name: "Cormorant Garamond",
-    category: "serif",
+  grenzeGotisch: {
+    name: "Grenze Gotisch",
+    category: "Blackletter",
     role: "display",
+    weights: ["400"],
+    url: "https://fonts.google.com/specimen/Grenze+Gotisch",
+  },
+  syneMono: {
+    name: "Syne Mono",
+    category: "monospace",
+    role: "display",
+    weights: ["400"],
+    url: "https://fonts.google.com/specimen/Syne+Mono",
+  },
+  audiowide: {
+    name: "Audiowide",
+    category: "display",
+    role: "display",
+    weights: ["400"],
+    url: "https://fonts.google.com/specimen/Audiowide",
+  },
+  bokor: {
+    name: "Bokor",
+    category: "display",
+    role: "display",
+    weights: ["400"],
+    url: "https://fonts.google.com/specimen/Bokor",
+  },
+
+  ebGaramond: {
+    name: "EB Garamond",
+    category: "serif",
+    role: "text",
     weights: ["400", "500", "600", "700"],
-    url: "https://fonts.google.com/specimen/Cormorant+Garamond",
+    url: "https://fonts.google.com/specimen/EB+Garamond",
   },
 
   sourceSerif: {

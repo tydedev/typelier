@@ -10,6 +10,7 @@ import {
 } from "@/lib/fonts";
 import { useEffect, useState } from "react";
 import BookPreview from "../preview/BookPreview";
+import { useTranslations } from "next-intl";
 
 const previews = [
   {
@@ -27,6 +28,7 @@ const previews = [
 ];
 
 export default function PreviewCarousel() {
+  const t = useTranslations("BookPage");
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -38,17 +40,25 @@ export default function PreviewCarousel() {
   }, []);
 
   return (
-    <div className="relative w-full flex justify-center items-center flex-1/2 py-30 mb-20">
-      {previews.map((preview, i) => (
-        <BookPreview
-          key={i}
-          headingFont={preview.headingFont}
-          bodyFont={preview.bodyFont}
-          className={`absolute transition-all duration-700 ${
-            i === index ? "opacity-100 scale-100" : "opacity-0 scale-95"
-          }`}
-        />
-      ))}
+    <div className="flex w-full flex-1/2 flex-col items-center justify-center py-30">
+      <div className="relative flex w-full justify-center">
+        {previews.map((preview, i) => (
+          <BookPreview
+            key={i}
+            headingFont={preview.headingFont}
+            bodyFont={preview.bodyFont}
+            className={`transition-all duration-700 ${
+              i === index
+                ? "relative opacity-100 scale-100"
+                : "absolute opacity-0 scale-95"
+            }`}
+          />
+        ))}
+      </div>
+
+      <p className="mt-8 text-center text-sm text-foreground/50">
+        {t.rich("excerpt", { i: (chunks) => <i>{chunks}</i> })}
+      </p>
     </div>
   );
 }

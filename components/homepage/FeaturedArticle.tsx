@@ -9,6 +9,10 @@ type Props = {
 export default function FeaturedArticle({ item, lastArticles = [] }: Props) {
   const allArticles = [item, ...lastArticles]
     .filter((article) => article.metadata?.date)
+    .filter(
+      (article, index, articles) =>
+        articles.findIndex((a) => a.slug === article.slug) === index,
+    )
     .sort(
       (a, b) =>
         new Date(b.metadata.date!).getTime() -
@@ -21,7 +25,7 @@ export default function FeaturedArticle({ item, lastArticles = [] }: Props) {
 
   const { title, description, category, readingTime } = latestArticle.metadata;
 
-  const latestArticles = allArticles
+  const previousArticles = allArticles
     .filter((article) => article.slug !== latestArticle.slug)
     .slice(0, 3);
 
@@ -74,10 +78,10 @@ export default function FeaturedArticle({ item, lastArticles = [] }: Props) {
         </div>
 
         {/* Previous articles */}
-        {latestArticles.length > 0 && (
+        {previousArticles.length > 0 && (
           <div className="md:col-span-6 md:col-start-5">
             <div className="mt-12 grid gap-x-4 gap-y-10 border-t border-foreground/15 pt-6 md:grid-cols-3">
-              {latestArticles.map((article, index) => (
+              {previousArticles.map((article, index) => (
                 <Link
                   key={article.slug}
                   href={`/resources/${article.slug}`}

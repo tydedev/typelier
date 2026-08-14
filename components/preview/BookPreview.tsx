@@ -6,12 +6,14 @@ type BookPreviewProps = {
   rotate?: string;
   className?: string;
   headingWeight?: string;
+  size?: string;
 };
 
 export default function BookPreview({
   headingFont,
   headingWeight,
   bodyFont,
+  size,
   rotate = "",
   className = "",
 }: BookPreviewProps) {
@@ -39,7 +41,7 @@ export default function BookPreview({
 
         <div
           lang={locale}
-          className={`${bodyFont} mt-10 flex-1 overflow-hidden text-justify text-[12px] leading-[1.5] hyphens-auto text-stone-800`}
+          className={`${bodyFont} mt-10 flex-1 overflow-hidden ${size ? size : "text-[12px]"} leading-[1.5] text-justify hyphens-auto text-stone-800`}
         >
           {t.rich("body", {
             p: (chunks) => <p>{chunks}</p>,

@@ -1,7 +1,7 @@
 import { fontMetadata } from "@/lib/fonts";
 import { Pairing } from "@/types/pairing";
 
-const pairings = [
+const pairings: Pairing[] = [
   {
     id: "fantasy-001",
     name: "Ancient Fantasy",
@@ -23,11 +23,10 @@ const pairings = [
 
     fonts: {
       heading: {
-        ...fontMetadata.cormorant,
-        key: "cormorant",
+        ...fontMetadata.ebGaramond,
+        key: "ebGaramond",
         weight: "font-bold",
       },
-
       body: {
         ...fontMetadata.sourceSerif,
         key: "sourceSerif",
@@ -44,21 +43,22 @@ const pairings = [
 
     recommendedFor: ["epic fantasy", "historical fantasy", "folklore"],
   },
+
   {
-    id: "midgr-001",
+    id: "fantasy-002",
     name: "Whimsical Tales",
     featured: true,
 
     classification: {
       type: "fiction",
       genre: "fantasy",
-      subgenre: "Middle Grade Fantasy",
+      subgenre: "middle grade fantasy",
     },
 
     mood: ["playful", "whimsical", "friendly", "lighthearted"],
 
     style: {
-      era: "classical",
+      era: "modern",
       tone: "warm",
       complexity: "low",
     },
@@ -69,7 +69,6 @@ const pairings = [
         key: "baloo2",
         weight: "font-normal",
       },
-
       body: {
         ...fontMetadata.nunito,
         key: "nunito",
@@ -90,6 +89,102 @@ const pairings = [
       "whimsical fiction",
     ],
   },
-] satisfies Pairing[];
+
+  {
+    id: "scifi-001",
+    name: "Space Odyssey",
+    featured: true,
+
+    classification: {
+      type: "fiction",
+      genre: "science fiction",
+      subgenre: "space opera",
+    },
+
+    mood: ["scifi", "space", "future", "exploration"],
+
+    style: {
+      era: "modern",
+      tone: "warm",
+      complexity: "high",
+    },
+
+    fonts: {
+      heading: {
+        ...fontMetadata.audiowide,
+        key: "audiowide",
+        weight: "font-bold",
+      },
+      body: {
+        ...fontMetadata.merriweather,
+        key: "merriweather",
+      },
+    },
+
+    typography: {
+      headingSize: "20pt",
+      headingLeading: "1.1",
+      bodySize: "11pt",
+      bodyLeading: "18pt",
+      alignment: "justify",
+    },
+
+    recommendedFor: [
+      "space opera",
+      "science fiction",
+      "future science fiction",
+      "space travel",
+    ],
+  },
+
+  {
+    id: "horror-001",
+    name: "Haunted Mansion",
+    featured: false,
+
+    classification: {
+      type: "fiction",
+      genre: "horror",
+      subgenre: "mystery",
+    },
+
+    mood: ["haunted", "dark", "creepy", "suspense"],
+
+    style: {
+      era: "modern",
+      tone: "dark",
+      complexity: "high",
+    },
+
+    fonts: {
+      heading: {
+        ...fontMetadata.grenzeGotisch,
+        key: "grenzeGotisch",
+        weight: "font-bold",
+      },
+      body: {
+        ...fontMetadata.ebGaramond,
+        key: "ebGaramond",
+        size: "text-[15px] leading-[18px]!",
+      },
+    },
+
+    typography: {
+      headingSize: "20pt",
+      headingLeading: "1.1",
+      bodySize: "11pt",
+      bodyLeading: "18pt",
+      alignment: "justify",
+    },
+
+    recommendedFor: [
+      "mystery",
+      "horror",
+      "ghost stories",
+      "suspense",
+      "haunted mansion",
+    ],
+  },
+];
 
 export default pairings;

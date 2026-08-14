@@ -15,6 +15,7 @@ type Props = {
 
 async function PairingPage({ params }: Props) {
   const t = await getTranslations("PairingPage");
+  const b = await getTranslations("BookPage");
   const { slug } = await params;
 
   const createSlug = (value: string) =>
@@ -30,12 +31,18 @@ async function PairingPage({ params }: Props) {
   return (
     <article className="grid grid-cols-1 lg:grid-cols-12 gap-12 py-20">
       {/* Preview */}
-      <div className="lg:col-span-5 flex items-start justify-center">
+      <div className="lg:col-span-5 flex flex-col items-start justify-center">
         <BookPreview
           headingFont={headingFont.className}
           bodyFont={bodyFont.className}
           headingWeight={pairing.fonts.heading.weight}
+          size={pairing.fonts.body.size}
         />
+        <p className="mt-5 text-xs text-foreground/50">
+          {b.rich("excerpt", {
+            i: (chunks) => <i>{chunks}</i>,
+          })}
+        </p>
       </div>
 
       {/* Details */}
@@ -74,7 +81,7 @@ async function PairingPage({ params }: Props) {
 
             <p className={`${headingFont.className} text-2xl mt-1`}>
               <Link
-                href={pairing.fonts.heading.url}
+                href={pairing.fonts.heading.url || ""}
                 target="_blank"
                 className="flex items-center gap-1"
               >
@@ -88,7 +95,7 @@ async function PairingPage({ params }: Props) {
 
             <p className={`${bodyFont.className} text-2xl mt-1`}>
               <Link
-                href={pairing.fonts.body.url}
+                href={pairing.fonts.body.url || ""}
                 target="_blank"
                 className="flex items-center gap-1"
               >
