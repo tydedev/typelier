@@ -3,7 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import ArticleImage from "@/components/mdx/ArticleImage";
 import BookPreview from "@/components/preview/BookPreview";
 import { Separator } from "@/components/ui/separator";
-import { getContent, getTranslatedPathnames } from "@/lib/content";
+import { getContent, getTranslatedPathnames, getContents } from "@/lib/content";
 import FormatDate from "@/components/FormatDate";
 import { SyncTranslatedPathnames } from "@/components/SyncTranslatedPathnames";
 import { Metadata } from "next";
@@ -20,6 +20,17 @@ type Props = {
 interface BookPreviewProps {
   headingFont: string;
   bodyFont: string;
+}
+
+export function generateStaticParams() {
+  const locales = ["it", "en"];
+
+  return locales.flatMap((locale) =>
+    getContents("resources", locale).map((resource) => ({
+      locale,
+      slug: resource.slug,
+    })),
+  );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

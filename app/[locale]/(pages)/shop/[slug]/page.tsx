@@ -4,7 +4,7 @@ import ArticleImage from "@/components/mdx/ArticleImage";
 import DownloadButton from "@/components/mdx/DownloadButton";
 import ProductTabs from "@/components/shop/ProductTabs";
 import { Separator } from "@/components/ui/separator";
-import { getContent, getTranslatedPathnames } from "@/lib/content";
+import { getContent, getContents, getTranslatedPathnames } from "@/lib/content";
 import { SyncTranslatedPathnames } from "@/components/SyncTranslatedPathnames";
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
@@ -17,6 +17,17 @@ type Props = {
     slug: string;
   }>;
 };
+
+export function generateStaticParams() {
+  const locales = ["it", "en"];
+
+  return locales.flatMap((locale) =>
+    getContents("shop", locale).map((item) => ({
+      locale,
+      slug: item.slug,
+    })),
+  );
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
