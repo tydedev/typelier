@@ -13,6 +13,18 @@ type Props = {
   }>;
 };
 
+export async function generateStaticParams() {
+  const createSlug = (value: string) =>
+    value.toLowerCase().trim().replace(/\s+/g, "-");
+
+  return ["en", "it"].flatMap((locale) =>
+    pairings.map((pairing) => ({
+      locale,
+      slug: createSlug(pairing.name),
+    })),
+  );
+}
+
 async function PairingPage({ params }: Props) {
   const t = await getTranslations("PairingPage");
   const b = await getTranslations("BookPage");
