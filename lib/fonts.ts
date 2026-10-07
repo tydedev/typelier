@@ -12,7 +12,6 @@ import {
   Syne_Mono,
   Grenze_Gotisch,
   Cormorant_Garamond,
-  Crimson_Pro,
   Newsreader,
   Libre_Baskerville,
   DM_Serif_Display,
@@ -89,11 +88,6 @@ export const cormorantGaramond = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
 });
 
-export const crimsonPro = Crimson_Pro({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
 export const newsreader = Newsreader({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -153,7 +147,6 @@ export const fontRegistry = {
   merriweather,
   playfair,
   cormorantGaramond,
-  crimsonPro,
   newsreader,
   libreBaskerville,
   dmSerifDisplay,
