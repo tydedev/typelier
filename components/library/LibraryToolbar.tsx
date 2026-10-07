@@ -1,19 +1,20 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "../ui/label";
+import { Button } from "../ui/button";
 import ViewSwitcher from "./ViewSwitcher";
 import { useTranslations } from "next-intl";
 
 type Props = {
   query: string;
   setQuery: (value: string) => void;
-  updateFilter: (key: string, value: string) => void;
+  search: () => void;
   changeView: (columns: 1 | 2 | 3 | 4) => void;
 };
 
 export default function LibraryToolbar({
   query,
   setQuery,
-  updateFilter,
+  search,
   changeView,
 }: Props) {
   const t = useTranslations("Library");
@@ -25,15 +26,18 @@ export default function LibraryToolbar({
           {t("filters.search")}
         </Label>
 
-        <Input
-          placeholder={t("filters.placeholder")}
-          className="bg-white/80"
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            updateFilter("q", e.target.value);
-          }}
-        />
+        <div className="flex gap-2">
+          <Input
+            placeholder={t("filters.placeholder")}
+            className="bg-white/80"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+
+          <Button type="button" onClick={search}>
+            {t("filters.search")}
+          </Button>
+        </div>
       </div>
 
       <ViewSwitcher changeView={changeView} />

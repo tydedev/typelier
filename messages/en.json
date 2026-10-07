@@ -9,6 +9,12 @@
     "description": "The page you are looking for could not be found.",
     "link": "Go back to the homepage"
   },
+
+  "Homepage": {
+    "from_the_journal": "From the Journal",
+    "latest_article": "Latest article",
+    "latest_articles": "Latest articles"
+  },
   "Hero": {
     "chapter": "Typelier",
     "title1": "Find the typography",
@@ -32,7 +38,7 @@
   },
   "Footer": {
     "title": "Typelier",
-    "description": "<p>Typelier is an independent, non-profit project.</p><p>All typography systems are manually researched and curated.</p>",
+    "description": "Typelier is an independent, non-profit project.",
     "copyright": "All rights reserved.",
     "developer": "Curated and developed by",
     "navigation": {
@@ -96,7 +102,8 @@
       "heading": "Heading",
       "body": "Body"
     },
-    "recommended": "Recommended for",
+    "recommended": "Best for",
+    "settings": "Recommended typography settings",
     "type": "Type",
     "genre": "Genre",
     "subgenre": "Subgenre",
@@ -113,9 +120,22 @@
     "title": "Articles",
     "description": "Articles about typography and writing.",
     "searchResults": "Search results",
+    "filters": {
+      "from_shop": "From the shop",
+      "view_all": "View all",
+      "placeholder": "Search products..."
+    },
     "noResults": "Nothing found",
     "for": "for",
     "noResultsDescription": "Try another keyword or browse another category."
+  },
+
+  "Resources": {
+    "articleFooter": {
+      "title": "Need help with your book?",
+      "description": "Professional book formatting and typography for independent authors.",
+      "link": "Visit my website"
+    }
   },
 
   "Shop": {
@@ -128,6 +148,7 @@
     "categories": "Categories",
     "noResults": "No results",
     "searchItems": "Search products...",
+    "last_added": "Last added",
     "options": {
       "printables": "Printables",
       "books": "Books",

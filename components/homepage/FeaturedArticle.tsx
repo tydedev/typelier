@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ContentItem } from "@/lib/content";
+import { useTranslations } from "next-intl";
 
 type Props = {
   item: ContentItem;
@@ -7,6 +8,7 @@ type Props = {
 };
 
 export default function FeaturedArticle({ item, lastArticles = [] }: Props) {
+  const t = useTranslations("Homepage");
   const allArticles = [item, ...lastArticles]
     .filter((article) => article.metadata?.date)
     .filter(
@@ -35,7 +37,7 @@ export default function FeaturedArticle({ item, lastArticles = [] }: Props) {
         {/* Label */}
         <div className="md:col-span-4">
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
-            From the Journal
+            {t("from_the_journal")}
           </p>
         </div>
 
@@ -59,16 +61,6 @@ export default function FeaturedArticle({ item, lastArticles = [] }: Props) {
 
             <div className="mt-8 flex items-center gap-4 text-xs uppercase tracking-[0.12em]">
               {category && <span>{category}</span>}
-
-              {readingTime && (
-                <>
-                  <span className="text-muted-foreground">·</span>
-
-                  <span className="text-muted-foreground">
-                    {readingTime} min read
-                  </span>
-                </>
-              )}
 
               <span className="ml-auto text-lg text-muted-foreground transition-transform duration-200 group-hover:translate-x-1">
                 →

@@ -29,15 +29,16 @@ async function PairingPage({ params }: Props) {
   const bodyFont = fontRegistry[pairing.fonts.body.key];
 
   return (
-    <article className="grid grid-cols-1 lg:grid-cols-12 gap-12 py-20">
+    <article className="grid grid-cols-1 gap-12 py-20 lg:grid-cols-12">
       {/* Preview */}
-      <div className="lg:col-span-5 flex flex-col items-start justify-center">
+      <div className="flex flex-col lg:items-start items-center justify-start lg:col-span-5">
         <BookPreview
           headingFont={headingFont.className}
           bodyFont={bodyFont.className}
           headingWeight={pairing.fonts.heading.weight}
           size={pairing.fonts.body.size}
         />
+
         <p className="mt-5 text-xs text-foreground/50">
           {b.rich("excerpt", {
             i: (chunks) => <i>{chunks}</i>,
@@ -46,11 +47,12 @@ async function PairingPage({ params }: Props) {
       </div>
 
       {/* Details */}
-      <aside className="lg:col-span-7 space-y-10">
+      <aside className="lg:col-span-7 lg:pt-6">
+        {/* Header */}
         <div>
           <SmallHeading margin="mt-0">{pairing.name}</SmallHeading>
 
-          <div className="mt-3 flex flex-wrap gap-3 text-sm text-foreground/70">
+          <div className="mt-3 flex items-center gap-3 text-sm text-foreground/90">
             <span className="capitalize">{pairing.classification.genre}</span>
 
             <span>·</span>
@@ -62,55 +64,68 @@ async function PairingPage({ params }: Props) {
         </div>
 
         {/* Mood */}
-        <div className="flex flex-wrap gap-2">
-          {pairing.mood.map((item) => (
-            <Link
-              href={`/library?mood=${item}`}
-              key={item}
-              className="rounded-full border px-3 py-1 text-xs capitalize hover:bg-foreground/5 transition"
-            >
-              {item}
-            </Link>
-          ))}
+        <div className="mt-10">
+          <Label>Mood</Label>
+
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+            {pairing.mood.map((item) => (
+              <Link
+                href={`/library?mood=${item}`}
+                key={item}
+                className="capitalize text-foreground/90 transition hover:text-foreground"
+              >
+                {item}
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Fonts */}
-        <div className="space-y-6">
-          <div>
-            <Label>{t("fonts.heading")}</Label>
+        <div className="mt-12 border-t pt-8">
+          <Label>{t("fonts.heading")}</Label>
 
-            <p className={`${headingFont.className} text-2xl mt-1`}>
-              <Link
-                href={pairing.fonts.heading.url || ""}
-                target="_blank"
-                className="flex items-center gap-1"
-              >
-                <Link2 size={16} /> {pairing.fonts.heading.name}
-              </Link>
-            </p>
-          </div>
+          <Link
+            href={pairing.fonts.heading.url || ""}
+            target="_blank"
+            className="group mt-2 flex items-center gap-2"
+          >
+            <span
+              className={`${headingFont.className} text-3xl text-foreground transition-opacity group-hover:opacity-60`}
+            >
+              {pairing.fonts.heading.name}
+            </span>
 
-          <div>
-            <Label>{t("fonts.body")}</Label>
+            <Link2
+              size={15}
+              className="text-foreground/90 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
+          </Link>
 
-            <p className={`${bodyFont.className} text-2xl mt-1`}>
-              <Link
-                href={pairing.fonts.body.url || ""}
-                target="_blank"
-                className="flex items-center gap-1"
-              >
-                <Link2 size={16} />
-                {pairing.fonts.body.name}
-              </Link>
-            </p>
-          </div>
+          <Label className="mt-8 block">{t("fonts.body")}</Label>
+
+          <Link
+            href={pairing.fonts.body.url || ""}
+            target="_blank"
+            className="group mt-2 flex items-center gap-2"
+          >
+            <span
+              className={`${bodyFont.className} text-3xl text-foreground transition-opacity group-hover:opacity-60`}
+            >
+              {pairing.fonts.body.name}
+            </span>
+
+            <Link2
+              size={15}
+              className="text-foreground/90 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
+          </Link>
         </div>
 
-        {/* Recommended */}
-        <div>
+        {/* Best for */}
+        <div className="mt-12 border-t pt-8">
           <Label>{t("recommended")}</Label>
 
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
             {pairing.recommendedFor.map((item) => (
               <span
                 key={item}
@@ -120,6 +135,60 @@ async function PairingPage({ params }: Props) {
               </span>
             ))}
           </div>
+        </div>
+
+        {/* Settings */}
+        <div className="mt-12 border-t pt-8">
+          <Label>{t("settings")}</Label>
+
+          <dl className="mt-5 grid grid-cols-2 gap-x-8 gap-y-5 text-sm">
+            {pairing.typography.bodySize && (
+              <div>
+                <dt className="text-foreground/90 font-medium">Body size</dt>
+                <dd className="mt-1 text-foreground/90">
+                  {pairing.typography.bodySize}
+                </dd>
+              </div>
+            )}
+
+            {pairing.typography.bodyLeading && (
+              <div>
+                <dt className="text-foreground/90 font-medium">Body leading</dt>
+                <dd className="mt-1 text-foreground/90">
+                  {pairing.typography.bodyLeading}
+                </dd>
+              </div>
+            )}
+
+            {pairing.typography.headingSize && (
+              <div>
+                <dt className="text-foreground/90 font-medium">Heading size</dt>
+                <dd className="mt-1 text-foreground/90">
+                  {pairing.typography.headingSize}
+                </dd>
+              </div>
+            )}
+
+            {pairing.typography.headingLeading && (
+              <div>
+                <dt className="text-foreground/90 font-medium">
+                  Heading leading
+                </dt>
+                <dd className="mt-1 text-foreground/90">
+                  {pairing.typography.headingLeading}
+                </dd>
+              </div>
+            )}
+
+            {pairing.typography.notes && (
+              <div className="col-span-2">
+                <dt className="text-foreground/90 font-medium">Notes</dt>
+                <dd className="mt-1 text-foreground/90 max-w-[400px]">
+                  {pairing.typography.notes}
+                </dd>
+              </div>
+            )}
+          </dl>
         </div>
       </aside>
     </article>

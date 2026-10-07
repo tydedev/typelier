@@ -35,6 +35,10 @@ export default function ResourcesContent({ resources, shopItems }: Props) {
     (item) => !featured.some((featuredItem) => featuredItem.slug === item.slug),
   );
 
+  const categories = Array.from(
+    new Set(resources.map((item) => item.metadata.category).filter(Boolean)),
+  );
+
   const filteredResources = useMemo(() => {
     const search = query.toLowerCase().trim();
     const category = selectedCategory.toLowerCase().trim();
@@ -56,7 +60,7 @@ export default function ResourcesContent({ resources, shopItems }: Props) {
   }, [query, selectedCategory, resources]);
 
   const updateFilter = (key: string, value: string) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams.toString());
 
     if (value && value !== "all") {
       params.set(key, value);
@@ -71,15 +75,14 @@ export default function ResourcesContent({ resources, shopItems }: Props) {
     router.replace(queryString ? `${pathname}?${queryString}` : pathname, {
       scroll: false,
     });
+  };
 
-    if (key === "q") {
-      setQuery(value);
-    }
+  const search = () => {
+    updateFilter("q", query.trim());
   };
 
   const clearFilters = () => {
     setQuery("");
-
     router.replace(pathname, {
       scroll: false,
     });
@@ -94,9 +97,11 @@ export default function ResourcesContent({ resources, shopItems }: Props) {
         <ResourcesSidebar
           query={query}
           setQuery={setQuery}
+          search={search}
           updateFilter={updateFilter}
           clearFilters={clearFilters}
           selectedCategory={selectedCategory}
+          categories={categories}
           shopItems={shopItems}
         />
       </div>
@@ -146,9 +151,11 @@ export default function ResourcesContent({ resources, shopItems }: Props) {
           <ResourcesSidebar
             query={query}
             setQuery={setQuery}
+            search={search}
             updateFilter={updateFilter}
             clearFilters={clearFilters}
             selectedCategory={selectedCategory}
+            categories={categories}
             shopItems={shopItems}
           />
         </aside>

@@ -15,6 +15,12 @@
     "subtitle": "Sistemi tipografici studiati per i libri, costruiti attorno a genere, atmosfera e leggibilità.",
     "button": "Esplora la libreria"
   },
+
+  "Homepage": {
+    "from_the_journal": "Dal Blog",
+    "latest_article": "Ultimo articolo",
+    "latest_articles": "Ultimi articoli"
+  },
   "InfoSection": {
     "quote": "La tipografia è il mestiere di dare al linguaggio umano una forma visiva duratura.",
     "author": "Robert Bringhurst",
@@ -32,7 +38,7 @@
 
   "Footer": {
     "title": "Typelier",
-    "description": "<p>Typelier è un progetto indipendente e non profit.</p><p>Tutti i sistemi tipografici sono studiati e selezionati manualmente.</p>",
+    "description": "Typelier è un progetto no-profit indipendente.",
     "copyright": "Tutti i diritti riservati.",
     "developer": "Curato e sviluppato da",
     "navigation": {
@@ -92,7 +98,8 @@
     "genre": "Genre",
     "subgenre": "Subgenre",
     "headingTitle": "Heading",
-    "bodyTitle": "Body"
+    "bodyTitle": "Body",
+    "settings": "Impostazioni tipografiche consigliate"
   },
 
   "Common": {
@@ -104,9 +111,21 @@
     "title": "Articles",
     "description": "Articles about typography and writing.",
     "searchResults": "Risultati ricerca",
+    "filters": {
+      "from_shop": "Dallo shop",
+      "view_all": "Vedi tutti",
+      "placeholder": "Cerca prodotti..."
+    },
     "noResults": "Nessun risultato",
     "for": "per",
     "noResultsDescription": "Prova con un'altra parola chiave o un'altra categoria."
+  },
+  "Resources": {
+    "articleFooter": {
+      "title": "Hai bisogno di aiuto con il tuo libro?",
+      "description": "Servizi professionali di impaginazione e tipografia per autori indipendenti.",
+      "link": "Visita il mio sito"
+    }
   },
   "Shop": {
     "title": "Shop",
@@ -115,6 +134,7 @@
     "free": "Gratis",
     "noResults": "Nessun risultato",
     "category": "Categoria",
+    "last_added": "Ultimo aggiunto",
     "format": "Formato",
     "categories": "Categorie",
     "searchItems": "Cerca i prodotti...",

@@ -6,8 +6,8 @@ import LibraryToolbar from "./LibraryToolbar";
 import LibraryFilters from "./LibraryFilters";
 import Pagination from "../ui/Pagination";
 
+import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { Pairing } from "@/types/pairing";
@@ -40,14 +40,38 @@ export default function Search({
 }: Props) {
   const t = useTranslations("Library");
 
-  const [view, setView] = useState(views[4]);
-  const [query, setQuery] = useState("");
-
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  const [view, setView] = useState(views[4]);
+  const [query, setQuery] = useState(searchParams.get("q") ?? "");
+
+  const displayedPairings = useMemo(() => {
+    const search = query.toLowerCase().trim();
+
+    if (!search) {
+      return filteredPairings;
+    }
+
+    return filteredPairings.filter((pairing) => {
+      const searchableValues = [
+        pairing.classification?.type,
+        pairing.classification?.genre,
+        pairing.classification?.subgenre,
+        ...(pairing.mood ?? []),
+        pairing.style,
+        pairing.fonts?.heading,
+        pairing.fonts?.body,
+      ];
+
+      return searchableValues
+        .filter(Boolean)
+        .some((value) => String(value).toLowerCase().includes(search));
+    });
+  }, [query, filteredPairings]);
+
   const updateFilter = (key: string, value: string) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams.toString());
 
     if (value && value !== "all") {
       params.set(key, value);
@@ -55,16 +79,29 @@ export default function Search({
       params.delete(key);
     }
 
-    // Quando cambia un filtro, torniamo alla prima pagina.
     params.delete("page");
 
-    router.push(`/library?${params.toString()}`, {
+    const queryString = params.toString();
+
+    router.replace(queryString ? `/library?${queryString}` : "/library", {
       scroll: false,
     });
   };
 
+  const search = () => {
+    updateFilter("q", query.trim());
+  };
+
   const changeView = (columns: keyof typeof views) => {
     setView(views[columns]);
+  };
+
+  const resetFilters = () => {
+    setQuery("");
+
+    router.replace("/library", {
+      scroll: false,
+    });
   };
 
   return (
@@ -76,19 +113,23 @@ export default function Search({
           <LibraryToolbar
             query={query}
             setQuery={setQuery}
-            updateFilter={updateFilter}
+            search={search}
             changeView={changeView}
           />
 
-          <LibraryFilters filters={filters} updateFilter={updateFilter} />
+          <LibraryFilters
+            filters={filters}
+            updateFilter={updateFilter}
+            resetFilters={resetFilters}
+          />
         </div>
       </div>
 
       <div className={`grid ${view} gap-4`}>
-        {filteredPairings.length === 0 ? (
+        {displayedPairings.length === 0 ? (
           <p className="col-span-full text-center">{t("no_results")}</p>
         ) : (
-          <PairingList pairings={filteredPairings} />
+          <PairingList pairings={displayedPairings} />
         )}
       </div>
 

@@ -13,8 +13,8 @@ const Hero = () => {
     router.push("/library");
   }
   return (
-    <section className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-12 min-h-screen py-16 md:py-0">
-      <div className="w-full md:max-w-4xl flex flex-col items-start justify-center gap-4 mb-20">
+    <section className="flex flex-col md:flex-row items-center justify-center md:justify-between md:gap-12 min-h-screen py-16 md:py-0">
+      <div className="w-full md:max-w-4xl flex flex-col items-start justify-center gap-4 md:mb-20">
         <h2 className="font-heading text-lg md:text-xl font-medium uppercase tracking-widest border-b border-foreground/10 pb-2 text-foreground/70 mb-2 w-full">
           Typelier
         </h2>
@@ -24,7 +24,7 @@ const Hero = () => {
           <span className="block">{t("title2")}</span>
         </h1>
 
-        <p className="mt-4 text-base md:text-lg text-foreground/70">
+        <p className="mt-4 text-base md:text-lg text-foreground/70 max-w-full md:max-w-[430px]">
           {t("subtitle")}
         </p>
         <div>

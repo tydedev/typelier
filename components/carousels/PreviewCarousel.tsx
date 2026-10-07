@@ -40,7 +40,7 @@ export default function PreviewCarousel() {
   }, []);
 
   return (
-    <div className="flex w-full flex-1/2 flex-col items-center justify-center py-30">
+    <div className="flex w-full flex-1/2 flex-col items-center justify-center pt-20 md:py-30">
       <div className="relative flex w-full justify-center">
         {previews.map((preview, i) => (
           <BookPreview

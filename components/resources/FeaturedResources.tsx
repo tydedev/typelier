@@ -8,8 +8,8 @@ type Props = {
 };
 
 export default function FeaturedResources({ items }: Props) {
-  const first = items.find((item) => item.metadata.first);
-  const second = items.find((item) => item.metadata.second);
+  const first = items.find((item) => item.metadata.first === true);
+  const second = items.find((item) => item.metadata.first === false);
   const t = useTranslations("Common");
 
   if (!first && !second) return null;

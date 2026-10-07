@@ -1,10 +1,11 @@
 import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 import { useTranslations } from "next-intl";
 
 type Props = {
   query: string;
   setQuery: (value: string) => void;
-  updateFilter: (key: string, value: string) => void;
+  search: () => void;
   clearFilters: () => void;
   selectedFilters: string;
 };
@@ -12,7 +13,7 @@ type Props = {
 const Filters = ({
   query,
   setQuery,
-  updateFilter,
+  search,
   clearFilters,
   selectedFilters,
 }: Props) => {
@@ -37,19 +38,28 @@ const Filters = ({
         )}
       </div>
 
-      <div className="mt-4">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          search();
+        }}
+        className="mt-4 flex gap-3"
+      >
         <Input
           placeholder={t("searchItems")}
           value={query}
-          onChange={(e) => {
-            const value = e.target.value;
-
-            setQuery(value);
-            updateFilter("q", value);
-          }}
+          onChange={(e) => setQuery(e.target.value)}
           className="h-auto rounded-none border-0 border-b border-foreground/20 bg-transparent px-0 py-3 text-sm shadow-none focus-visible:border-foreground focus-visible:ring-0"
         />
-      </div>
+
+        <Button
+          type="submit"
+          variant="ghost"
+          className="shrink-0 rounded-none px-2 text-xs self-center cursor-pointer"
+        >
+          Search
+        </Button>
+      </form>
     </div>
   );
 };

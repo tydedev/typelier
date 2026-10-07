@@ -18,13 +18,10 @@ const ProductList = ({ items }: Props) => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const initialQuery = searchParams.get("q") ?? "";
-
-  const [query, setQuery] = useState(initialQuery);
+  const [query, setQuery] = useState(searchParams.get("q") ?? "");
 
   const getFilters = (key: string) => {
     const value = searchParams.get(key);
-
     return value ? value.split("+").filter(Boolean) : [];
   };
 
@@ -53,10 +50,11 @@ const ProductList = ({ items }: Props) => {
     );
   }, [items]);
 
-  const updateQuery = (value: string) => {
-    const params = new URLSearchParams(searchParams);
+  const search = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    const value = query.trim();
 
-    if (value.trim()) {
+    if (value) {
       params.set("q", value);
     } else {
       params.delete("q");
@@ -69,8 +67,6 @@ const ProductList = ({ items }: Props) => {
     router.replace(queryString ? `/shop?${queryString}` : "/shop", {
       scroll: false,
     });
-
-    setQuery(value);
   };
 
   const clearFilters = () => {
@@ -82,37 +78,39 @@ const ProductList = ({ items }: Props) => {
   };
 
   const updateFilter = (key: string, value: string) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams.toString());
+
     if (!value || value === "all") {
       params.delete(key);
     } else {
       params.set(key, value);
     }
+
     params.delete("page");
+
     const queryString = params.toString();
+
     router.replace(queryString ? `/shop?${queryString}` : "/shop", {
       scroll: false,
     });
   };
 
   const filteredResources = useMemo(() => {
-    const search = query.trim().toLowerCase();
+    const searchValue = query.trim().toLowerCase();
 
     return items
       .filter((item) => {
         const title = item.metadata.title?.toLowerCase() ?? "";
         const description = item.metadata.description?.toLowerCase() ?? "";
-
         const category = item.metadata.shopCategory?.trim().toLowerCase() ?? "";
-
         const format = item.metadata.format?.trim().toLowerCase() ?? "";
 
         const matchesQuery =
-          !search ||
-          title.includes(search) ||
-          description.includes(search) ||
-          category.includes(search) ||
-          format.includes(search);
+          !searchValue ||
+          title.includes(searchValue) ||
+          description.includes(searchValue) ||
+          category.includes(searchValue) ||
+          format.includes(searchValue);
 
         const matchesCategory =
           selectedCategories.length === 0 ||
@@ -141,17 +139,13 @@ const ProductList = ({ items }: Props) => {
           <Filters
             query={query}
             setQuery={setQuery}
-            updateFilter={(key, value) => {
-              if (key === "q") {
-                updateQuery(value);
-              }
-            }}
+            search={search}
             clearFilters={clearFilters}
             selectedFilters=""
           />
         </div>
 
-        <div className="flex gap-2 w-1/2">
+        <div className="flex w-1/2 gap-2">
           <ShopFilters
             label={t("category")}
             filterKey="category"

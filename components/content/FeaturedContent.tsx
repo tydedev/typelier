@@ -10,6 +10,7 @@ type Props = {
 export default function FeaturedContent({ item }: Props) {
   const { metadata } = item;
   const t = useTranslations("Common");
+  const s = useTranslations("Shop");
 
   const href =
     metadata.type === "article"
@@ -20,9 +21,8 @@ export default function FeaturedContent({ item }: Props) {
     <section className="border-t border-foreground/15 pt-5">
       <div className="mb-10 flex items-baseline justify-between">
         <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-          Last added
+          {s("last_added")}
         </p>
-
         <span className="font-mono text-xs text-muted-foreground">01</span>
       </div>
 

@@ -48,7 +48,7 @@ export interface Pairing {
     headingLeading: string;
     bodySize: string;
     bodyLeading: string;
-    alignment: string;
+    notes?: string;
   };
 
   recommendedFor: string[];

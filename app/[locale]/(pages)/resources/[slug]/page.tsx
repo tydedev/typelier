@@ -10,6 +10,9 @@ import { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
 import { cinzel, lora } from "@/lib/fonts";
 import { routing } from "@/i18n/routing";
+import remarkGfm from "remark-gfm";
+import Image from "next/image";
+import ArticleFooter from "@/components/resources/ArticleFooter";
 
 type Props = {
   params: Promise<{
@@ -51,12 +54,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     languages[loc] = `${SITE_URL}/${loc}${pathname}`;
   }
 
+  const url = `${SITE_URL}/${locale}/resources/${slug}`;
+
   return {
     title: resource.metadata.title,
     description: resource.metadata.description,
+
     alternates: {
-      canonical: `${SITE_URL}/${locale}/resources/${slug}`,
+      canonical: url,
       languages,
+    },
+
+    openGraph: {
+      type: "article",
+      url,
+      title: resource.metadata.title,
+      description: resource.metadata.description,
+      siteName: "Typelier",
+      locale: locale === "it" ? "it_IT" : "en_US",
+      publishedTime: resource.metadata.date,
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: resource.metadata.title,
+      description: resource.metadata.description,
     },
   };
 }
@@ -69,14 +91,46 @@ export default async function ResourcePage({ params }: Props) {
   if (!resource) {
     notFound();
   }
+
   const translatedPathnames = getTranslatedPathnames(
     "resources",
     resource.metadata.id,
     ["it", "en"],
   );
 
+  const url = `${SITE_URL}/${locale}/resources/${slug}`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: resource.metadata.title,
+    description: resource.metadata.description,
+    datePublished: resource.metadata.date,
+    author: {
+      "@type": "Organization",
+      name: "Typelier",
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Typelier",
+      url: SITE_URL,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+  };
+
   return (
     <main className="bg-[#FCFBF8]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+
       <SyncTranslatedPathnames pathnames={translatedPathnames} />
       <article
         className="
@@ -116,7 +170,9 @@ export default async function ResourcePage({ params }: Props) {
           >
             {resource.metadata.description}
           </p>
+
           <Separator className="my-8" />
+
           <div className="flex items-center justify-between text-sm text-foreground/50">
             <p>
               {resource.metadata.date ? (
@@ -125,12 +181,25 @@ export default async function ResourcePage({ params }: Props) {
                 ""
               )}
             </p>
+
             <p>{resource.metadata.readingTime} min.</p>
           </div>
         </header>
+        {resource.metadata.image && (
+          <div className="relative mb-20 aspect-[16/9] w-full overflow-hidden">
+            <Image
+              src={resource.metadata.image}
+              alt={resource.metadata.title}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        )}
 
         <div
           className="
+            font-serif
             prose
             prose-neutral
             max-w-none
@@ -141,18 +210,54 @@ export default async function ResourcePage({ params }: Props) {
             prose-headings:font-medium
 
             prose-h2:mt-20
-            prose-h2:text-3xl
+            prose-h2:text-2xl
+            prose-h2:md:text-3xl
+
+            prose-h3:mt-16
+            prose-h3:text-xl
+            prose-h3:md:text-2xl
 
             prose-p:mx-0
             prose-p:m-1
             prose-p:leading-normal
-            prose-p:text-base
+            prose-p:text-sm
+            prose-p:md:text-base
+            prose-li:text-sm
+            prose-li:md:text-base
 
             prose-li:text-neutral-700
+            prose-sup:text-xs
+            prose-sup:font-medium
+            [&_[data-footnotes]]:mt-16
+            [&_[data-footnotes]]:border-t
+            [&_[data-footnotes]]:pt-8
+            
+            /* Use ! to override .prose font sizing and margins */
+            [&_[data-footnotes]_h2]:!text-base
+            [&_[data-footnotes]_h2]:!mt-0
+            [&_[data-footnotes]_h2]:!mb-2
+            
+            /* Target text sizing across lists and nested paragraphs */
+            [&_[data-footnotes]_ol]:!mt-4
+            [&_[data-footnotes]_li]:!text-sm
+            [&_[data-footnotes]_p]:!text-sm
+            [&_[data-footnotes]_p]:!leading-relaxed
+            
+            /* Target colors & utility elements */
+            [&_[data-footnotes]_li]:!text-neutral-600
+            [&_[data-footnotes]_li::marker]:!text-neutral-500
+            [&_[data-footnotes]_a]:!text-neutral-700
+            [&_[data-footnotes]_a]:!no-underline
+            [&_[data-footnotes]_a:hover]:!underline
           "
         >
           <MDXRemote
             source={resource.content}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [remarkGfm],
+              },
+            }}
             components={{
               ArticleImage,
               Separator,
@@ -169,6 +274,7 @@ export default async function ResourcePage({ params }: Props) {
             }}
           />
         </div>
+        <ArticleFooter />
       </article>
     </main>
   );

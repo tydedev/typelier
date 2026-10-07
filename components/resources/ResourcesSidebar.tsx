@@ -2,35 +2,39 @@
 
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import type { ContentItem } from "@/lib/content";
+import { useTranslations } from "next-intl";
 
 type Props = {
   query: string;
   setQuery: (value: string) => void;
+  search: () => void;
   updateFilter: (key: string, value: string) => void;
   clearFilters: () => void;
   selectedCategory: string;
   shopItems: ContentItem[];
+  categories: string[];
 };
-
-const categories = ["Book Formatting", "Book Design", "Typography"];
 
 export default function ResourcesSidebar({
   query,
   setQuery,
-  updateFilter,
+  search,
   clearFilters,
   selectedCategory,
   shopItems,
+  updateFilter,
+  categories,
 }: Props) {
   const latestShop = shopItems.slice(0, 4);
-
   const isFiltering = Boolean(query || selectedCategory);
+  const t = useTranslations("Blog");
 
   return (
-    <div>
+    <div className="md:border-l border-foreground/15 md:pl-6 md:min-h-screen">
       {/* Search */}
-      <section className="border-t border-foreground/15 pt-4">
+      <section className="md:border-t border-foreground/15 pt-4">
         <div className="flex items-baseline justify-between">
           <p className="text-xs font-medium uppercase tracking-[0.15em]">
             Search
@@ -47,19 +51,28 @@ export default function ResourcesSidebar({
           )}
         </div>
 
-        <div className="mt-4">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            search();
+          }}
+          className="mt-4 flex gap-3"
+        >
           <Input
-            placeholder="Search resources..."
+            placeholder={t("filters.placeholder")}
             value={query}
-            onChange={(e) => {
-              const value = e.target.value;
-
-              setQuery(value);
-              updateFilter("q", value);
-            }}
+            onChange={(e) => setQuery(e.target.value)}
             className="h-auto rounded-none border-0 border-b border-foreground/20 bg-transparent px-0 py-3 text-sm shadow-none focus-visible:border-foreground focus-visible:ring-0"
           />
-        </div>
+
+          <Button
+            type="submit"
+            variant="ghost"
+            className="shrink-0 rounded-none px-2 text-xs self-center cursor-pointer"
+          >
+            Search
+          </Button>
+        </form>
       </section>
 
       {/* Categories */}
@@ -108,14 +121,14 @@ export default function ResourcesSidebar({
         <section className="mt-10 hidden border-t border-foreground/15 pt-4 md:block">
           <div className="flex items-baseline justify-between">
             <p className="text-xs font-medium uppercase tracking-[0.15em]">
-              From the Shop
+              {t("filters.from_shop")}
             </p>
 
             <Link
               href="/shop"
               className="text-xs text-muted-foreground transition-colors hover:text-foreground"
             >
-              View all →
+              {t("filters.view_all")} →
             </Link>
           </div>
 

@@ -11,6 +11,17 @@ import {
   Audiowide,
   Syne_Mono,
   Grenze_Gotisch,
+  Cormorant_Garamond,
+  Crimson_Pro,
+  Newsreader,
+  Libre_Baskerville,
+  DM_Serif_Display,
+  DM_Sans,
+  Manrope,
+  Inter,
+  Poppins,
+  Josefin_Sans,
+  Space_Grotesk,
 } from "next/font/google";
 
 export const ebGaramond = EB_Garamond({
@@ -73,19 +84,85 @@ export const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700"],
 });
 
+export const cormorantGaramond = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const crimsonPro = Crimson_Pro({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const libreBaskerville = Libre_Baskerville({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+export const dmSerifDisplay = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+export const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const josefinSans = Josefin_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const fontRegistry = {
+  ebGaramond,
+  grenzeGotisch,
+  syneMono,
+  audiowide,
+  bokor,
   sourceSerif,
   baloo2,
+  nunito,
   cinzel,
   lora,
   merriweather,
   playfair,
-  nunito,
-  bokor,
-  audiowide,
-  syneMono,
-  grenzeGotisch,
-  ebGaramond,
+  cormorantGaramond,
+  crimsonPro,
+  newsreader,
+  libreBaskerville,
+  dmSerifDisplay,
+  dmSans,
+  manrope,
+  inter,
+  poppins,
+  josefinSans,
+  spaceGrotesk,
 };
 
 export const fontMetadata = {
@@ -96,6 +173,7 @@ export const fontMetadata = {
     weights: ["400"],
     url: "https://fonts.google.com/specimen/Grenze+Gotisch",
   },
+
   syneMono: {
     name: "Syne Mono",
     category: "monospace",
@@ -103,6 +181,7 @@ export const fontMetadata = {
     weights: ["400"],
     url: "https://fonts.google.com/specimen/Syne+Mono",
   },
+
   audiowide: {
     name: "Audiowide",
     category: "display",
@@ -110,6 +189,7 @@ export const fontMetadata = {
     weights: ["400"],
     url: "https://fonts.google.com/specimen/Audiowide",
   },
+
   bokor: {
     name: "Bokor",
     category: "display",
@@ -180,5 +260,93 @@ export const fontMetadata = {
     role: "text",
     weights: ["400", "500", "600", "700"],
     url: "https://fonts.google.com/specimen/Nunito",
+  },
+
+  cormorantGaramond: {
+    name: "Cormorant Garamond",
+    category: "serif",
+    role: "display",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.google.com/specimen/Cormorant+Garamond",
+  },
+
+  crimsonPro: {
+    name: "Crimson Pro",
+    category: "serif",
+    role: "text",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.google.com/specimen/Crimson+Pro",
+  },
+
+  newsreader: {
+    name: "Newsreader",
+    category: "serif",
+    role: "text",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.google.com/specimen/Newsreader",
+  },
+
+  libreBaskerville: {
+    name: "Libre Baskerville",
+    category: "serif",
+    role: "text",
+    weights: ["400", "700"],
+    url: "https://fonts.google.com/specimen/Libre+Baskerville",
+  },
+
+  dmSerifDisplay: {
+    name: "DM Serif Display",
+    category: "serif",
+    role: "display",
+    weights: ["400"],
+    url: "https://fonts.google.com/specimen/DM+Serif+Display",
+  },
+
+  dmSans: {
+    name: "DM Sans",
+    category: "sans-serif",
+    role: "text",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.google.com/specimen/DM+Sans",
+  },
+
+  manrope: {
+    name: "Manrope",
+    category: "sans-serif",
+    role: "text",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.google.com/specimen/Manrope",
+  },
+
+  inter: {
+    name: "Inter",
+    category: "sans-serif",
+    role: "text",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.google.com/specimen/Inter",
+  },
+
+  poppins: {
+    name: "Poppins",
+    category: "sans-serif",
+    role: "text",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.google.com/specimen/Poppins",
+  },
+
+  josefinSans: {
+    name: "Josefin Sans",
+    category: "sans-serif",
+    role: "display",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.google.com/specimen/Josefin+Sans",
+  },
+
+  spaceGrotesk: {
+    name: "Space Grotesk",
+    category: "sans-serif",
+    role: "display",
+    weights: ["400", "500", "600", "700"],
+    url: "https://fonts.google.com/specimen/Space+Grotesk",
   },
 } as const;

@@ -91,7 +91,7 @@ export default function ProductTabs({
 
             {specifications.size && (
               <div className="grid grid-cols-2 gap-6 py-4 text-sm">
-                <dt className="text-muted-foreground">{t("size")}</dt>
+                <dt className="text-muted-foreground">{t("sizes")}</dt>
                 <dd className="text-right font-medium">
                   {specifications.size}
                 </dd>

@@ -1,11 +1,9 @@
-import { Label } from "../ui/label";
 import { Button } from "../ui/button";
 import { RotateCcw } from "lucide-react";
 
 import GenreSelect from "./GenreSelect";
 import FontCategorySelect from "./FontCategorySelect";
 import MoodCombobox from "./MoodCombobox";
-import { useRouter } from "next/navigation";
 
 type Filters = {
   genres: string[];
@@ -16,13 +14,14 @@ type Filters = {
 type Props = {
   filters: Filters;
   updateFilter: (key: string, value: string) => void;
+  resetFilters: () => void;
 };
 
-export default function LibraryFilters({ filters, updateFilter }: Props) {
-  const router = useRouter();
-  const resetFilters = () => {
-    router.push("/library", { scroll: false });
-  };
+export default function LibraryFilters({
+  filters,
+  updateFilter,
+  resetFilters,
+}: Props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
       <GenreSelect genres={filters.genres} updateFilter={updateFilter} />

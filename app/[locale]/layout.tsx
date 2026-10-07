@@ -1,4 +1,4 @@
-import { Newsreader, IBM_Plex_Sans } from "next/font/google";
+import { Newsreader, IBM_Plex_Sans, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
@@ -16,6 +16,11 @@ const newsreader = Newsreader({
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   variable: "--font-body",
+});
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  variable: "--font-serif",
 });
 
 export function generateStaticParams() {
@@ -55,7 +60,11 @@ export default async function LocaleLayout({
       lang={locale}
       className={cn(
         "font-body",
-        ibmPlexSans.variable + " " + newsreader.variable,
+        ibmPlexSans.variable +
+          " " +
+          newsreader.variable +
+          " " +
+          sourceSerif.variable,
       )}
       suppressHydrationWarning
     >

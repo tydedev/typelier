@@ -49,7 +49,7 @@ const PairingList = ({ pairings }: PairingListProps) => {
                     {pairing.name}
                   </h2>
 
-                  <p className="mt-1 text-xs text-foreground/50 capitalize">
+                  <p className="mt-1 text-xs text-foreground/80 capitalize">
                     {pairing.classification.genre} ·{" "}
                     {pairing.classification.subgenre}
                   </p>

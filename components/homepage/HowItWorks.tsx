@@ -9,7 +9,9 @@ const HowItWorks = () => {
     <div>
       <SmallHeading>{t("title")}</SmallHeading>
       <section className="grid grid-cols-1 md:grid-cols-3 gap-8 py-10">
-        <p className="font-medium pb-5 text-2xl">{t("question")}</p>
+        <p className="font-medium pb-5 text-2xl md:text-4xl font-heading">
+          {t("question")}
+        </p>
         <div className="font-sm">
           {t.rich("description", {
             p: (chunks) => <p className="pb-3">{chunks}</p>,
