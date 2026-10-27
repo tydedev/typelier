@@ -36,7 +36,7 @@ export default function FeaturedContent({ item }: Props) {
               </p>
             )}
 
-            <h1 className="mt-4 max-w-xl font-serif text-4xl leading-[0.95] tracking-tight md:text-5xl lg:text-6xl">
+            <h1 className="mt-4 max-w-xl font-heading text-4xl leading-[0.95] tracking-tight md:text-5xl lg:text-6xl">
               {metadata.title}
             </h1>
 

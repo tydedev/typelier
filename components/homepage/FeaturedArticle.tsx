@@ -49,7 +49,7 @@ export default function FeaturedArticle({ item, lastArticles = [] }: Props) {
           >
             <p className="font-mono text-xs text-muted-foreground">01</p>
 
-            <h2 className="mt-5 max-w-3xl font-serif text-4xl leading-[0.95] tracking-tight md:text-6xl">
+            <h2 className="mt-5 max-w-3xl font-heading text-4xl leading-[0.95] tracking-tight md:text-6xl">
               {title}
             </h2>
 

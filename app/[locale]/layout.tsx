@@ -68,6 +68,9 @@ export default async function LocaleLayout({
       )}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/evx5lxy.css" />
+      </head>
       <body className="min-h-screen flex flex-col">
         <NextIntlClientProvider>
           <Header />

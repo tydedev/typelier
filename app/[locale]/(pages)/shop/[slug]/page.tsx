@@ -115,7 +115,7 @@ export default async function ProductPage({ params }: Props) {
                 </p>
               )}
 
-              <h1 className="mt-4 font-serif text-4xl leading-[0.95] tracking-tight md:text-5xl">
+              <h1 className="mt-4 font-heading text-4xl leading-[0.95] tracking-tight md:text-5xl">
                 {metadata.title}
               </h1>
 
@@ -158,7 +158,7 @@ export default async function ProductPage({ params }: Props) {
                 prose-neutral
                 max-w-3xl
 
-                prose-headings:font-serif
+                prose-headings:font-heading
                 prose-headings:font-normal
                 prose-headings:tracking-tight
 

@@ -15,7 +15,7 @@ const Hero = () => {
   return (
     <section className="flex flex-col md:flex-row items-center justify-center md:justify-between md:gap-12 min-h-screen py-16 md:py-0">
       <div className="w-full md:max-w-4xl flex flex-col items-start justify-center gap-4 md:mb-20">
-        <h2 className="font-heading text-lg md:text-xl font-medium uppercase tracking-widest border-b border-foreground/10 pb-2 text-foreground/70 mb-2 w-full">
+        <h2 className="font-body text-lg md:text-xl font-medium uppercase tracking-widest border-b border-foreground/10 pb-2 text-foreground/70 mb-2 w-full">
           Typelier
         </h2>
 

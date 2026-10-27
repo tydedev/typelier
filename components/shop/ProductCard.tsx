@@ -28,7 +28,7 @@ export default function ProductCard({ item }: Props) {
         <div className="mt-4 border-t border-foreground/15 pt-4">
           <div className="flex items-start justify-between gap-6">
             <div className="min-w-0">
-              <h2 className="font-serif text-xl leading-tight tracking-tight transition-colors group-hover:text-foreground/65">
+              <h2 className="font-heading text-xl leading-tight tracking-tight transition-colors group-hover:text-foreground/65">
                 {metadata.title}
               </h2>
 

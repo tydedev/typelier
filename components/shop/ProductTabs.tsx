@@ -61,7 +61,7 @@ export default function ProductTabs({
               prose-neutral
               max-w-3xl
 
-              prose-headings:font-serif
+              prose-headings:font-heading
               prose-headings:font-normal
               prose-headings:tracking-tight
 

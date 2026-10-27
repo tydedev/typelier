@@ -43,7 +43,7 @@ export default function ResourceList({
                   </p>
                 )}
 
-                <h3 className="max-w-2xl font-serif text-xl leading-tight tracking-tight md:text-2xl">
+                <h3 className="max-w-2xl font-heading text-xl leading-tight tracking-tight md:text-2xl">
                   {title}
                 </h3>
 

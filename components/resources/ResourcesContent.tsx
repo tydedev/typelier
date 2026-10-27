@@ -117,7 +117,7 @@ export default function ResourcesContent({ resources, shopItems }: Props) {
                   {t("searchResults")}
                 </p>
 
-                <p className="mt-6 font-serif text-3xl tracking-tight">
+                <p className="mt-6 font-heading text-3xl tracking-tight">
                   {t("noResults")}
 
                   {query && (

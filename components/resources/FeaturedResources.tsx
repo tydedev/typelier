@@ -49,7 +49,7 @@ export default function FeaturedResources({ items }: Props) {
                 </p>
               )}
 
-              <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-[1.05] tracking-tight md:text-4xl lg:text-5xl">
+              <h2 className="mt-3 max-w-2xl font-heading text-3xl leading-[1.05] tracking-tight md:text-4xl lg:text-5xl">
                 {first.metadata.title}
               </h2>
 
@@ -92,7 +92,7 @@ export default function FeaturedResources({ items }: Props) {
                 </p>
               )}
 
-              <h2 className="mt-3 font-serif text-2xl leading-tight tracking-tight md:text-3xl">
+              <h2 className="mt-3 font-heading text-2xl leading-tight tracking-tight md:text-3xl">
                 {second.metadata.title}
               </h2>
 

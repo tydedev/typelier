@@ -19,7 +19,7 @@ export default function SearchResults({ items, query }: Props) {
             </p>
 
             {query && (
-              <h2 className="mt-2 font-serif text-3xl tracking-tight">
+              <h2 className="mt-2 font-heading text-3xl tracking-tight">
                 “{query}”
               </h2>
             )}
@@ -52,7 +52,7 @@ export default function SearchResults({ items, query }: Props) {
                   </p>
                 )}
 
-                <h3 className="font-serif text-xl leading-tight tracking-tight transition-transform group-hover:translate-x-1 md:text-2xl">
+                <h3 className="font-heading text-xl leading-tight tracking-tight transition-transform group-hover:translate-x-1 md:text-2xl">
                   {title}
                 </h3>
 

@@ -32,8 +32,4 @@ export const links: (MenuLink | MenuSubmenu)[] = [
       },
     ],
   },
-  {
-    name: "howTo",
-    href: "/how-to",
-  },
 ];

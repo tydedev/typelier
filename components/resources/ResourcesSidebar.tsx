@@ -145,7 +145,7 @@ export default function ResourcesSidebar({
                   </span>
 
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-serif text-base leading-tight">
+                    <h3 className="font-heading text-base leading-tight">
                       {item.metadata.title}
                     </h3>
 

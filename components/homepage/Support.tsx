@@ -8,7 +8,7 @@ const Support = () => {
       <div className="grid gap-10 md:grid-cols-12 md:gap-12">
         {/* Label */}
         <div className="md:col-span-4">
-          <p className="text-4xl font-semibold font-heading">{t("label")}</p>
+          <p className="text-4xl font-heading">{t("label")}</p>
         </div>
 
         {/* Latest article */}

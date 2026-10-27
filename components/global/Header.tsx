@@ -18,19 +18,20 @@ const Header = () => {
   return (
     <header className="fixed w-screen inset-x-0 top-0 z-50 border-b border-foreground/10 bg-background/80 backdrop-blur-md">
       <div className="px-6 md:px-24 max-w-360 mx-auto flex items-center justify-between py-6">
-        <Link
-          href="/"
-          className="font-heading text-2xl select-none font-bold hidden md:block text-nowrap mr-20"
-        >
-          Aa | <span className="font-medium">typelier</span>
-        </Link>
-
-        <Link
-          href="/"
-          className="font-heading text-2xl font-bold md:hidden select-none text-nowrap mr-10"
-        >
-          Aa | <span className="font-medium">t</span>
-        </Link>
+        <div className="md:max-w-[350px] shrink-0 mr-10">
+          <Link
+            href="/"
+            className="font-heading text-2xl flex items-center gap-2 font-bold"
+          >
+            <Image
+              src="/logotype.svg"
+              alt="Typelier"
+              width={150}
+              height={75}
+              className="max-w-full h-auto"
+            />
+          </Link>
+        </div>
         <nav className="hidden md:flex w-full">
           <ul className="flex items-center gap-6">
             {links.map((link) => (
